@@ -32,6 +32,9 @@ func _on_Button_pressed():
 		amountLabel.text=String(amount)
 		Game.dinos[fname]+=1
 		print(Game.dinos)
+		price=ceil(price*1.1)
+		priceLabel.text=String(price)+"$"
+	
 
 
 func _on_Timer_timeout():
