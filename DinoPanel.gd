@@ -34,7 +34,7 @@ func _on_Button_pressed():
 		print(Game.dinos)
 		price=ceil(price*1.1)
 		priceLabel.text=String(price)+"$"
-	
+		Game.main.add_sprite("res://eoraptor.png")
 
 
 func _on_Timer_timeout():

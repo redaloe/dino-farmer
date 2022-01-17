@@ -1,5 +1,6 @@
 extends Node
 
+var main
 var money=0
 var dinos={}
 # Declare member variables here. Examples:
