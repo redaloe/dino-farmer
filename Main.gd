@@ -11,6 +11,7 @@ onready var egg_panel=load("res://EggPanel.tscn")
 onready var dino_panel= load("res://DinoPanel.tscn")
 onready var money_label=$MainScreen/Panel/HBoxContainer/Money
 onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
+var starter_dino="Eoraptor"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -19,18 +20,18 @@ func _ready():
 	var r= parse_json(dino_list.get_as_text())
 	Game.dino_list=r
 	Game.main=self
-	add_dino_button("Eoraptor",10,1)
-	
-	Game.money=10
+	Game.money=r[starter_dino]["price"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	money_label.text="Money: "+String(Game.money)+"$"
+	money_label.text="Money: "+String(round(Game.money))+"$"
 	for dino in Game.dino_list:
-		if !(dino in Game.dinos):
-			if Game.money >= (Game.dino_list[dino]["price"])*0.8:
-				add_dino_button(dino)
+		if dino!="version":
+			if !(dino in Game.dinos):
+				print((Game.dino_list[dino]["price"])*0.8)
+				if Game.money >= (Game.dino_list[dino]["price"])*0.8:
+					add_dino_button(dino)
 		
 func add_sprite(sprite):
 	var c=Container.new()
@@ -43,13 +44,16 @@ func add_sprite(sprite):
 	print(dino_grid.get_children())
 	
 func add_dino_button(fname:String):
+	var d=Game.dino_list[fname]
 	var tri= dino_panel.instance()
 	tri.fname=fname
-	tri.price=price
+	tri.price=d["price"]
+	tri.period=d["period"]
+	tri.clutch=d["clutch"]
 	dino_list.add_child(tri)
 	var bi= egg_panel.instance()
 	bi.fname=fname
-	bi.price=price
+	bi.price=d["egg_price"]
 	egg_list.add_child(bi)
 	
 

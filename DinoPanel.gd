@@ -3,6 +3,8 @@ extends MarginContainer
 
 var fname=""
 var price=10
+var period=5
+var clutch=1
 var amount=0
 
 onready var nameLabel=$Panel/HBoxContainer/VBoxContainer/Name
@@ -17,6 +19,7 @@ func _ready():
 	amountLabel.text=String(amount)
 	Game.dinos[fname]=0
 	Game.eggs[fname]=0
+	$Timer.wait_time=period
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -37,4 +40,4 @@ func _on_Button_pressed():
 
 
 func _on_Timer_timeout():
-	Game.eggs[fname]+=amount
+	Game.eggs[fname]+=clutch*amount
