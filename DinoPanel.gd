@@ -13,14 +13,15 @@ onready var amountLabel=$Panel/HBoxContainer/Amount
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Game.dinos[fname]=0
-	Game.eggs[fname]=0
-	nameLabel.text=fname
-	priceLabel.text=String(price)+"$"
-	amountLabel.text=String(Game.dinos[fname])
-	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
-
-	$Timer.wait_time=period
+	if fname!="???":
+		Game.dinos[fname]=0
+		Game.eggs[fname]=0
+		nameLabel.text=fname
+		priceLabel.text=String(price)+"$"
+		amountLabel.text=String(Game.dinos[fname])
+		profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
+		#profitLabel.bbcode_text="[center]Produces [color=purple]%d[/color] eggs every [color=purple]%d[/color] seconds[/center]" % [clutch,period]
+		$Timer.wait_time=period
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

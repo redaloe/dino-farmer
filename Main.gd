@@ -9,6 +9,7 @@ onready var dino_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollCon
 onready var egg_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Eggs
 onready var egg_panel=load("res://EggPanel.tscn")
 onready var dino_panel= load("res://DinoPanel.tscn")
+onready var mystery_panel= load("res://MysteryPanel.tscn")
 onready var money_label=$MainScreen/Panel/HBoxContainer/Money
 onready var timer_label=$MainScreen/Panel/HBoxContainer/TimerLabel
 #onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
@@ -23,6 +24,7 @@ func _ready():
 	Game.dino_list=r
 	Game.main=self
 	Game.money=r[starter_dino]["price"]
+	create_unknown_panel()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,6 +59,7 @@ func add_dino_button(fname:String):
 	bi.fname=fname
 	bi.price=d["egg_price"]
 	egg_list.add_child(bi)
+	create_unknown_panel()
 	
 
 			
@@ -120,3 +123,16 @@ func _on_MarketTimer_timeout():
 	for d in Game.market:
 		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.5
 		Game.market[d]+=correction
+
+func create_unknown_panel():
+	if Game.mystery_panel != null:
+		Game.mystery_panel.queue_free()
+	var p_array=[]
+	for d in Game.dino_list:
+		if !(d in Game.dinos.keys()):
+			p_array.append(Game.dino_list[d]["price"])
+	p_array.sort()
+	if p_array.size()>0:
+		var tri= mystery_panel.instance()
+		tri.price=p_array[0]
+		dino_list.add_child(tri)

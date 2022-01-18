@@ -1,21 +1,15 @@
-extends Node
+extends MarginContainer
 
-var dino_list
-var mystery_panel
-var main
-var money=0
-var dinos={}
-var eggs={}
-var market={}
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
+var price=69
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-
+	Game.mystery_panel=self
+	$Panel/HBoxContainer/Price.bbcode_text="[center]Unlocked at [color=purple]%d[/color][/center]" % price
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
