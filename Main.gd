@@ -10,7 +10,7 @@ onready var egg_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollCont
 onready var egg_panel=load("res://EggPanel.tscn")
 onready var dino_panel= load("res://DinoPanel.tscn")
 onready var money_label=$MainScreen/Panel/HBoxContainer/Money
-onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
+#onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
 var starter_dino="Eoraptor"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +18,7 @@ func _ready():
 	var dino_list=File.new()
 	dino_list.open("res://dinos.json", File.READ)
 	var r= parse_json(dino_list.get_as_text())
+	dino_list.close()
 	Game.dino_list=r
 	Game.main=self
 	Game.money=r[starter_dino]["price"]
@@ -29,19 +30,18 @@ func _process(_delta):
 	for dino in Game.dino_list:
 		if dino!="version":
 			if !(dino in Game.dinos):
-				print((Game.dino_list[dino]["price"])*0.8)
 				if Game.money >= (Game.dino_list[dino]["price"])*0.8:
 					add_dino_button(dino)
 		
-func add_sprite(sprite):
-	var c=Container.new()
-	var spr= Sprite.new()
-	spr.texture=load(sprite)
-	spr.scale.x=0.1
-	spr.scale.y=0.1
-	c.add_child(spr)
-	dino_grid.add_child(c)
-	print(dino_grid.get_children())
+#func add_sprite(sprite):
+#	var c=Container.new()
+#	var spr= Sprite.new()
+#	spr.texture=load(sprite)
+#	spr.scale.x=0.1
+#	spr.scale.y=0.1
+#	c.add_child(spr)
+#	dino_grid.add_child(c)
+#	print(dino_grid.get_children())
 	
 func add_dino_button(fname:String):
 	var d=Game.dino_list[fname]
@@ -78,3 +78,25 @@ func _on_SettingTab_pressed():
 	for b in a.get_children():
 		b.hide()
 	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings.show()
+
+
+func _on_TutTab_pressed():
+	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer
+	for b in a.get_children():
+		b.hide()
+	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Tut.show()
+
+
+func _on_Save_pressed():
+	var s= File.new()
+	s.open("res://save.dat", File.WRITE)
+	var save_data=[Game.dinos,Game.eggs]
+	s.store_var(save_data)
+	s.close()
+
+
+func _on_Load_pressed():
+	var s= File.new()
+	s.open("res://save.dat", File.READ)
+	print(s.get_var())
+	s.close()

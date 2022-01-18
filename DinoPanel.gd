@@ -17,6 +17,7 @@ func _ready():
 	nameLabel.text=fname
 	priceLabel.text=String(price)+"$"
 	amountLabel.text=String(amount)
+	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
 	Game.dinos[fname]=0
 	Game.eggs[fname]=0
 	$Timer.wait_time=period
