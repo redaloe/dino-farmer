@@ -13,8 +13,12 @@ onready var money_label=$MainScreen/Panel/HBoxContainer/Money
 onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	var dino_list=File.new()
+	print(dino_list.file_exists("res://dinos.json"))
 	dino_list.open("res://dinos.json", File.READ)
+	var r= parse_json(dino_list.get_as_text())
+	print(r)
 	Game.main=self
 	add_dino_button("Eoraptor",10,1)
 	

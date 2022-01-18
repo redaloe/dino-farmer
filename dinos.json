@@ -1,6 +1,29 @@
 {
-version:1
-dinos:[
-{name:"Eoraptor"},{}
-]
+	"version": 1,
+	"dinos": [
+		{
+			"name": "Eoraptor",
+			"price": 50,
+			"diet": "Omnivore",
+			"period": 5,
+			"egg_price": 10,
+			"flags": []
+		},
+		{
+			"name": "Plateosaurus",
+			"price": 500,
+			"diet": "Herbivore",
+			"period": 2,
+			"egg_price": 15,
+			"flags": []
+		},
+		{
+			"name": "Herrerasaurus",
+			"price": 5000,
+			"diet": "Carnivore",
+			"period": 5,
+			"egg_price": 50,
+			"flags": []
+		},
+	]
 }
