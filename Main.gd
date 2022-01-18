@@ -15,10 +15,9 @@ onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
 func _ready():
 	
 	var dino_list=File.new()
-	print(dino_list.file_exists("res://dinos.json"))
 	dino_list.open("res://dinos.json", File.READ)
 	var r= parse_json(dino_list.get_as_text())
-	print(r)
+	Game.dino_list=r
 	Game.main=self
 	add_dino_button("Eoraptor",10,1)
 	
@@ -28,10 +27,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	money_label.text="Money: "+String(Game.money)+"$"
-	if Game.money>100 and !("Velociraptor" in Game.dinos):
-		add_dino_button("Velociraptor",100,10)
-	if Game.money>1000 and !("Triceratops" in Game.dinos):
-		add_dino_button("Triceratops",1000,100)
+	for dino in Game.dino_list:
+		if !(dino in Game.dinos):
+			if Game.money >= (Game.dino_list[dino]["price"])*0.8:
+				add_dino_button(dino)
 		
 func add_sprite(sprite):
 	var c=Container.new()
@@ -43,7 +42,7 @@ func add_sprite(sprite):
 	dino_grid.add_child(c)
 	print(dino_grid.get_children())
 	
-func add_dino_button(fname:String,price:int,egg_price:int):
+func add_dino_button(fname:String):
 	var tri= dino_panel.instance()
 	tri.fname=fname
 	tri.price=price
@@ -52,6 +51,9 @@ func add_dino_button(fname:String,price:int,egg_price:int):
 	bi.fname=fname
 	bi.price=price
 	egg_list.add_child(bi)
+	
+
+			
 
 func _on_DinoTab_pressed():
 	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer

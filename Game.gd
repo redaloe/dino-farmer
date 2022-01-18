@@ -1,6 +1,6 @@
 extends Node
 
-
+var dino_list
 var main
 var money=0
 var dinos={}
