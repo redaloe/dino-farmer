@@ -90,7 +90,7 @@ func _on_TutTab_pressed():
 func _on_Save_pressed():
 	var s= File.new()
 	s.open("res://save.dat", File.WRITE)
-	var save_data=[Game.dinos,Game.eggs]
+	var save_data=[Game.dinos,Game.eggs,Game.money]
 	s.store_var(save_data)
 	s.close()
 
@@ -98,5 +98,12 @@ func _on_Save_pressed():
 func _on_Load_pressed():
 	var s= File.new()
 	s.open("res://save.dat", File.READ)
-	print(s.get_var())
+	var a=s.get_var()
+	print(a)
+	for dino in a[0]:
+		if !(dino in Game.dinos):
+			add_dino_button(dino)
+	Game.dinos=a[0]
+	Game.eggs=a[1]
+	Game.money=a[2]
 	s.close()

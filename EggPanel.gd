@@ -35,5 +35,5 @@ func _on_Button_pressed():
 
 
 func _on_Timer_timeout():
-	current_price+=(price-current_price)*0.05
+	current_price+=(price-current_price)*0.5
 	priceLabel.text=String(round(current_price))+"$"
