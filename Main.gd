@@ -29,7 +29,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	money_label.text="Money: "+String(round(Game.money))+"$"
+	money_label.text="Money: "+String(floor(Game.money))+"$"
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	for dino in Game.dino_list:
 		if dino!="version":
@@ -122,8 +122,10 @@ func _on_Load_pressed():
 func _on_MarketTimer_timeout():
 	for d in Game.market:
 		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.5
-		Game.market[d]+=correction
-
+		if abs(correction)>1:
+			Game.market[d]+=correction
+		else:
+			Game.market[d]=Game.dino_list[d]["egg_price"]
 func create_unknown_panel():
 	if Game.mystery_panel != null:
 		Game.mystery_panel.queue_free()
