@@ -24,7 +24,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	amountLabel.text=String(Game.dinos[fname])
+	amountLabel.text="Owned: "+String(Game.dinos[fname])
 
 
 
@@ -33,7 +33,6 @@ func _on_Button_pressed():
 		Game.money-=price
 		Game.dinos[fname]+=1
 		amountLabel.text=String(Game.dinos[fname])
-		print(Game.dinos)
 		price=ceil(price*1.05)
 		priceLabel.text=String(price)+"$"
 

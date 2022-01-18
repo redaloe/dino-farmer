@@ -10,6 +10,7 @@ onready var egg_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollCont
 onready var egg_panel=load("res://EggPanel.tscn")
 onready var dino_panel= load("res://DinoPanel.tscn")
 onready var money_label=$MainScreen/Panel/HBoxContainer/Money
+onready var timer_label=$MainScreen/Panel/HBoxContainer/TimerLabel
 #onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
 var starter_dino="Eoraptor"
 # Called when the node enters the scene tree for the first time.
@@ -27,12 +28,13 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	money_label.text="Money: "+String(round(Game.money))+"$"
+	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	for dino in Game.dino_list:
 		if dino!="version":
 			if !(dino in Game.dinos):
 				if Game.money >= (Game.dino_list[dino]["price"])*0.8:
 					add_dino_button(dino)
-		
+	
 #func add_sprite(sprite):
 #	var c=Container.new()
 #	var spr= Sprite.new()
@@ -89,21 +91,32 @@ func _on_TutTab_pressed():
 
 func _on_Save_pressed():
 	var s= File.new()
-	s.open("res://save.dat", File.WRITE)
-	var save_data=[Game.dinos,Game.eggs,Game.money]
-	s.store_var(save_data)
-	s.close()
-
+	if !(s.open("res://save.dat", File.WRITE)):
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market]
+		print(save_data)
+		s.store_var(save_data)
+		s.close()
+	else:
+		print("Saving failed!")
 
 func _on_Load_pressed():
 	var s= File.new()
-	s.open("res://save.dat", File.READ)
-	var a=s.get_var()
-	print(a)
-	for dino in a[0]:
-		if !(dino in Game.dinos):
-			add_dino_button(dino)
-	Game.dinos=a[0]
-	Game.eggs=a[1]
-	Game.money=a[2]
-	s.close()
+	if !(s.open("res://save.dat", File.READ)):
+		var a=s.get_var()
+		print(a)
+		for dino in a[0]:
+			if !(dino in Game.dinos):
+				add_dino_button(dino)
+		Game.dinos=a[0]
+		Game.eggs=a[1]
+		Game.money=a[2]
+		Game.market=a[3]
+		s.close()
+	else:
+		print("Loading Failed!")
+
+
+func _on_MarketTimer_timeout():
+	for d in Game.market:
+		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.5
+		Game.market[d]+=correction

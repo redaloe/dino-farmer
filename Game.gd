@@ -5,6 +5,7 @@ var main
 var money=0
 var dinos={}
 var eggs={}
+var market={}
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

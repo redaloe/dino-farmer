@@ -1,5 +1,4 @@
 {
-	"version": 1,
 	"Eoraptor": {
 		"price": 50,
 		"diet": "Omnivore",
@@ -9,18 +8,18 @@
 		"flags": []
 	},
 	"Plateosaurus": {
-		"price": 500,
+		"price": 200,
 		"diet": "Herbivore",
 		"period": 2,
 		"clutch":1,
-		"egg_price": 15,
+		"egg_price": 5,
 		"flags": []
 	},
 	"Herrerasaurus": {
-		"price": 1000,
+		"price": 500,
 		"diet": "Carnivore",
 		"period": 10,
-		"clutch":1,
+		"clutch":2,
 		"egg_price": 50,
 		"flags": []
 	}
