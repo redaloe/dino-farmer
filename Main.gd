@@ -26,10 +26,12 @@ func _ready():
 	Game.money=r[starter_dino]["price"]
 	add_dino_button(starter_dino)
 	create_unknown_panel()
+	#load_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
 	money_label.text="Money: "+visually_pleasing(floor(Game.money))
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	update_stats()
@@ -93,7 +95,7 @@ func save_game():
 	print(button)
 	if !(s.open("res://save%s.sav"%button, File.WRITE)):
 		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices]
-		print(save_data)
+		print("saving")
 		s.store_var(save_data)
 		s.close()
 	else:
@@ -104,7 +106,7 @@ func load_game():
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
 	if !(s.open("res://save%s.sav"%button, File.READ)):
 		var a=s.get_var()
-		print(a)
+		print("loading")
 		for dino in a[0]:
 			if !(dino in Game.dinos):
 				add_dino_button(dino)

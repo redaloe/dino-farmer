@@ -97,6 +97,7 @@ theme = SubResource( 2 )
 text = "Buy"
 
 [node name="Sell" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
+visible = false
 margin_top = 23.0
 margin_right = 30.0
 margin_bottom = 42.0
