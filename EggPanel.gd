@@ -20,12 +20,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	amountLabel.text="Owned: "+String(Game.eggs[fname])
-	priceLabel.text="%.2f$" % Game.market[fname]
-	if(Game.eggs[fname]<1):
-		$Panel/HBoxContainer/Button.disabled=true
+	if !(fname in Game.dinos):
+		print("zift")
+		queue_free()
 	else:
-		$Panel/HBoxContainer/Button.disabled=false
+		amountLabel.text="Owned: "+String(Game.eggs[fname])
+		priceLabel.text="%.2f$" % Game.market[fname]
+		if(Game.eggs[fname]<1):
+			$Panel/HBoxContainer/Button.disabled=true
+		else:
+			$Panel/HBoxContainer/Button.disabled=false
 
 func _on_Button_pressed():
 	if(Game.eggs[fname]>0):

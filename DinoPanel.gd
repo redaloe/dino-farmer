@@ -25,15 +25,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	amountLabel.text="Owned: "+String(Game.dinos[fname])
-	if (Game.money<Game.dino_prices[fname]):
-		$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=true
+	if !(fname in Game.dinos):
+		print("zift")
+		queue_free()
 	else:
-		$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=false
-	if (Game.dinos[fname]<1):
-		$Panel/HBoxContainer/VBoxContainer2/Sell.disabled=true
-	else:
-		$Panel/HBoxContainer/VBoxContainer2/Sell.disabled=false
+		amountLabel.text="Owned: "+String(Game.dinos[fname])
+		if (Game.money<Game.dino_prices[fname]):
+			$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=true
+		else:
+			$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=false
+		if (Game.dinos[fname]<1):
+			$Panel/HBoxContainer/VBoxContainer2/Sell.disabled=true
+		else:
+			$Panel/HBoxContainer/VBoxContainer2/Sell.disabled=false
 		
 func _on_Sell_pressed():
 	if(Game.dinos[fname]>=1):
