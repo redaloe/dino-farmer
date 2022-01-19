@@ -82,7 +82,6 @@ func _on_EggTab_pressed():
 func _on_SettingTab_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings)
 
-
 func _on_TutTab_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Tut)
 	
@@ -177,3 +176,7 @@ func _on_Autosave_toggled(button_pressed):
 	Game.autosave=button_pressed
 	
 
+
+
+func _on_Upgrades_pressed():
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades)

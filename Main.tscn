@@ -54,7 +54,7 @@ __meta__ = {
 }
 
 [node name="DinoTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_right = 144.0
+margin_right = 125.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -63,8 +63,8 @@ theme = SubResource( 2 )
 text = "Dinosaurs"
 
 [node name="EggTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 148.0
-margin_right = 293.0
+margin_left = 129.0
+margin_right = 254.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -72,9 +72,19 @@ size_flags_stretch_ratio = 0.5
 theme = SubResource( 2 )
 text = "Eggs"
 
+[node name="Upgrades" type="Button" parent="MainScreen/Panel/HBoxContainer"]
+margin_left = 258.0
+margin_right = 384.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 100, 54 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme = SubResource( 2 )
+text = "Upgrades"
+
 [node name="SettingTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 297.0
-margin_right = 442.0
+margin_left = 388.0
+margin_right = 513.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -83,8 +93,8 @@ theme = SubResource( 2 )
 text = "Settings"
 
 [node name="Stats" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 446.0
-margin_right = 591.0
+margin_left = 517.0
+margin_right = 642.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -93,8 +103,8 @@ theme = SubResource( 2 )
 text = "Stats"
 
 [node name="TutTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 595.0
-margin_right = 740.0
+margin_left = 646.0
+margin_right = 772.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -111,14 +121,14 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
 
 [node name="VSeparator2" type="VSeparator" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 744.0
-margin_right = 748.0
+margin_left = 776.0
+margin_right = 780.0
 margin_bottom = 54.0
 
 [node name="TimerLabel" type="Label" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 752.0
+margin_left = 784.0
 margin_top = 17.0
-margin_right = 868.0
+margin_right = 884.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
@@ -129,12 +139,12 @@ __meta__ = {
 }
 
 [node name="VSeparator" type="VSeparator" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 872.0
-margin_right = 876.0
+margin_left = 888.0
+margin_right = 892.0
 margin_bottom = 54.0
 
 [node name="Money" type="Label" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 880.0
+margin_left = 896.0
 margin_top = 17.0
 margin_right = 997.0
 margin_bottom = 36.0
@@ -191,7 +201,6 @@ __meta__ = {
 }
 
 [node name="Dinos" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
-visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -204,7 +213,15 @@ margin_bottom = 498.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="Upgrades" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+visible = false
+margin_right = 989.0
+margin_bottom = 498.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="Settings" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -332,6 +349,7 @@ autostart = true
 
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/DinoTab" to="." method="_on_DinoTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/EggTab" to="." method="_on_EggTab_pressed"]
+[connection signal="pressed" from="MainScreen/Panel/HBoxContainer/Upgrades" to="." method="_on_Upgrades_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/SettingTab" to="." method="_on_SettingTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/Stats" to="." method="_on_Stats_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/TutTab" to="." method="_on_TutTab_pressed"]
