@@ -27,7 +27,7 @@ func _process(delta):
 func _on_Button_pressed():
 	if(Game.eggs[fname]>0):
 		Game.money+=Game.market[fname]*Game.eggs[fname]
-		Game.market[fname]=Game.market[fname]/(Game.eggs[fname])
+		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
 		Game.eggs[fname]=0
 
 

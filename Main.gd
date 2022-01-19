@@ -32,9 +32,8 @@ func _process(_delta):
 	money_label.text="Money: "+String(floor(Game.money))+"$"
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	for dino in Game.dino_list:
-		if dino!="version":
 			if !(dino in Game.dinos):
-				if Game.money >= (Game.dino_list[dino]["price"])*0.8:
+				if Game.money >= (Game.dino_list[dino]["unlock_price"]):
 					add_dino_button(dino)
 	
 #func add_sprite(sprite):
@@ -121,18 +120,21 @@ func _on_Load_pressed():
 
 func _on_MarketTimer_timeout():
 	for d in Game.market:
-		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.5
-		if abs(correction)>1:
+		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.375
+		if abs(Game.dino_list[d]["egg_price"]-(Game.market[d]+correction))>0.5:
+		#if the difference between base price and corrected price is less than 0.5, just set price to base price
+		#to prevent zeno's paradox 
 			Game.market[d]+=correction
 		else:
 			Game.market[d]=Game.dino_list[d]["egg_price"]
+			
 func create_unknown_panel():
 	if Game.mystery_panel != null:
 		Game.mystery_panel.queue_free()
 	var p_array=[]
 	for d in Game.dino_list:
 		if !(d in Game.dinos.keys()):
-			p_array.append(Game.dino_list[d]["price"])
+			p_array.append(Game.dino_list[d]["unlock_price"])
 	p_array.sort()
 	if p_array.size()>0:
 		var tri= mystery_panel.instance()

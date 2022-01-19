@@ -34,7 +34,7 @@ func _on_Button_pressed():
 		Game.money-=price
 		Game.dinos[fname]+=1
 		amountLabel.text=String(Game.dinos[fname])
-		price=ceil(price*1.05)
+		price=ceil(price*1.1)
 		priceLabel.text=String(price)+"$"
 
 

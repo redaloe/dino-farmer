@@ -1,6 +1,7 @@
 {
 	"Eoraptor": {
-		"price": 50,
+		"price": 100,
+		"unlock_price":100,
 		"diet": "Omnivore",
 		"period": 5,
 		"clutch":1,
@@ -9,6 +10,7 @@
 	},
 	"Plateosaurus": {
 		"price": 200,
+		"unlock_price":1000,
 		"diet": "Herbivore",
 		"period": 2,
 		"clutch":1,
@@ -16,7 +18,8 @@
 		"flags": []
 	},
 	"Herrerasaurus": {
-		"price": 500,
+		"price": 1000,
+		"unlock_price":10000,
 		"diet": "Carnivore",
 		"period": 10,
 		"clutch":2,
