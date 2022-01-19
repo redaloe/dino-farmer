@@ -114,8 +114,8 @@ text = "How To Play"
 
 [node name="Buffer" type="Container" parent="MainScreen/Panel/HBoxContainer"]
 visible = false
-margin_left = 691.0
-margin_right = 758.0
+margin_left = 726.0
+margin_right = 785.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25

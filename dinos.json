@@ -9,48 +9,48 @@
 		"flags": []
 	},
 	"Plateosaurus": {
-		"price": 350,
-		"unlock_price":1000,
+		"price": 4000,
+		"unlock_price":5000,
 		"diet": "Herbivore",
 		"period": 2,
-		"clutch":1,
-		"egg_price": 10,
+		"clutch":2,
+		"egg_price": 20,
 		"flags": []
 	},
 	"Herrerasaurus": {
-		"price": 1000,
-		"unlock_price":5000,
+		"price": 10000,
+		"unlock_price":10000,
 		"diet": "Carnivore",
-		"period": 10,
-		"clutch":2,
-		"egg_price": 80,
+		"period": 60,
+		"clutch":10,
+		"egg_price": 500,
 		"flags": []
 	},
 	"Triceratops": {
-		"price": 2500,
-		"unlock_price":10000,
-		"diet": "Carnivore",
-		"period": 1,
-		"clutch":2,
-		"egg_price": 18,
-		"flags": []
-	},
-	"Stegosaurus": {
-		"price": 5000,
-		"unlock_price":25000,
+		"price": 16000,
+		"unlock_price":20000,
 		"diet": "Carnivore",
 		"period": 5,
 		"clutch":2,
-		"egg_price": 200,
+		"egg_price": 400,
+		"flags": []
+	},
+	"Stegosaurus": {
+		"price": 100000,
+		"unlock_price":100000,
+		"diet": "Carnivore",
+		"period": 1,
+		"clutch":10,
+		"egg_price": 50,
 		"flags": []
 	},
 	"Velociraptor": {
-		"price": 10000,
-		"unlock_price":50000,
+		"price": 200000,
+		"unlock_price":200000,
 		"diet": "Carnivore",
 		"period": 120,
 		"clutch":20,
-		"egg_price": 1000,
+		"egg_price": 10000,
 		"flags": []
 	}
 }
