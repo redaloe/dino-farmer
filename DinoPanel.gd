@@ -2,9 +2,9 @@ extends MarginContainer
 
 
 var fname=""
-var price=10
 var period=5
 var clutch=1
+var price_coefficient=1.1
 
 onready var nameLabel=$Panel/HBoxContainer/VBoxContainer/Name
 onready var profitLabel=$Panel/HBoxContainer/VBoxContainer/Profit
@@ -17,7 +17,7 @@ func _ready():
 	Game.eggs[fname]=0
 	Game.stats["%s Eggs Produced" % fname]=0
 	nameLabel.text=fname
-	priceLabel.text=String(price)+"$"
+	priceLabel.text=String(Game.dino_prices[fname])+"$"
 	amountLabel.text=String(Game.dinos[fname])
 	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
 	#profitLabel.bbcode_text="[center]Produces [color=purple]%d[/color] eggs every [color=purple]%d[/color] seconds[/center]" % [clutch,period]
@@ -27,15 +27,21 @@ func _ready():
 func _process(delta):
 	amountLabel.text="Owned: "+String(Game.dinos[fname])
 
-
+func _on_Sell_pressed():
+	if(Game.dinos[fname]>=1):
+		Game.money+=Game.dino_prices[fname]*0.75
+		Game.dinos[fname]-=1
+		amountLabel.text=String(Game.dinos[fname])
+		Game.dino_prices[fname]=Game.dino_prices[fname]/price_coefficient
+		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
 
 func _on_Button_pressed():
-	if(Game.money>=price):
-		Game.money-=price
+	if(Game.money>=Game.dino_prices[fname]):
+		Game.money-=Game.dino_prices[fname]
 		Game.dinos[fname]+=1
 		amountLabel.text=String(Game.dinos[fname])
-		price=ceil(price*1.1)
-		priceLabel.text=String(price)+"$"
+		Game.dino_prices[fname]=Game.dino_prices[fname]*price_coefficient
+		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
 
 
 

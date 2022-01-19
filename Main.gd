@@ -52,7 +52,7 @@ func add_dino_button(fname:String):
 	var d=Game.dino_list[fname]
 	var tri= dino_panel.instance()
 	tri.fname=fname
-	tri.price=d["price"]
+	Game.dino_prices[fname]=d["price"]
 	tri.period=d["period"]
 	tri.clutch=d["clutch"]
 	dino_list.add_child(tri)
@@ -89,7 +89,7 @@ func _on_Stats_pressed():
 func _on_Save_pressed():
 	var s= File.new()
 	if !(s.open("res://save.dat", File.WRITE)):
-		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats]
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices]
 		print(save_data)
 		s.store_var(save_data)
 		s.close()
@@ -109,6 +109,7 @@ func _on_Load_pressed():
 		Game.money=a[2]
 		Game.market=a[3]
 		Game.stats=a[4]
+		Game.dino_prices=a[5]
 		s.close()
 	else:
 		print("Loading Failed!")
