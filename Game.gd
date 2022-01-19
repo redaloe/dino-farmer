@@ -7,6 +7,8 @@ var money=0
 var dinos={}
 var eggs={}
 var market={}
+var stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -20,3 +22,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func add_money(amount:float):
+	money+=amount
+	stats["Money (all-time)"]+=amount

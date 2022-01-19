@@ -24,6 +24,7 @@ func _ready():
 	Game.dino_list=r
 	Game.main=self
 	Game.money=r[starter_dino]["price"]
+	add_dino_button(starter_dino)
 	create_unknown_panel()
 
 
@@ -31,9 +32,10 @@ func _ready():
 func _process(_delta):
 	money_label.text="Money: "+String(floor(Game.money))+"$"
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
+	update_stats()
 	for dino in Game.dino_list:
 			if !(dino in Game.dinos):
-				if Game.money >= (Game.dino_list[dino]["unlock_price"]):
+				if Game.stats["Money (all-time)"] >= (Game.dino_list[dino]["unlock_price"]):
 					add_dino_button(dino)
 	
 #func add_sprite(sprite):
@@ -60,41 +62,34 @@ func add_dino_button(fname:String):
 	egg_list.add_child(bi)
 	create_unknown_panel()
 	
-
-			
-
-func _on_DinoTab_pressed():
+func switch_panel(node:Control):
 	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer
 	for b in a.get_children():
 		b.hide()
-	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Dinos.show()
+	node.show()
+	
+func _on_DinoTab_pressed():
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Dinos)
 
 
 func _on_EggTab_pressed():
-	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer
-	for b in a.get_children():
-		b.hide()
-	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Eggs.show()
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Eggs)
 
 
 func _on_SettingTab_pressed():
-	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer
-	for b in a.get_children():
-		b.hide()
-	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings.show()
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings)
 
 
 func _on_TutTab_pressed():
-	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer
-	for b in a.get_children():
-		b.hide()
-	$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Tut.show()
-
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Tut)
+	
+func _on_Stats_pressed():
+	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats)
 
 func _on_Save_pressed():
 	var s= File.new()
 	if !(s.open("res://save.dat", File.WRITE)):
-		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market]
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats]
 		print(save_data)
 		s.store_var(save_data)
 		s.close()
@@ -113,6 +108,7 @@ func _on_Load_pressed():
 		Game.eggs=a[1]
 		Game.money=a[2]
 		Game.market=a[3]
+		Game.stats=a[4]
 		s.close()
 	else:
 		print("Loading Failed!")
@@ -140,3 +136,9 @@ func create_unknown_panel():
 		var tri= mystery_panel.instance()
 		tri.price=p_array[0]
 		dino_list.add_child(tri)
+
+func update_stats():
+	var stat_label=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats/StatLabel
+	stat_label.bbcode_text=""
+	for stat in Game.stats:
+		stat_label.append_bbcode("%s: [color=gold]%d[/color] \n" % [stat,Game.stats[stat]])

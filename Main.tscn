@@ -52,7 +52,7 @@ __meta__ = {
 }
 
 [node name="DinoTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_right = 125.0
+margin_right = 144.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -61,8 +61,8 @@ theme = SubResource( 2 )
 text = "Dinosaurs"
 
 [node name="EggTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 129.0
-margin_right = 255.0
+margin_left = 148.0
+margin_right = 293.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -71,8 +71,8 @@ theme = SubResource( 2 )
 text = "Eggs"
 
 [node name="SettingTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 259.0
-margin_right = 385.0
+margin_left = 297.0
+margin_right = 442.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -80,9 +80,19 @@ size_flags_stretch_ratio = 0.5
 theme = SubResource( 2 )
 text = "Settings"
 
+[node name="Stats" type="Button" parent="MainScreen/Panel/HBoxContainer"]
+margin_left = 446.0
+margin_right = 591.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 100, 54 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme = SubResource( 2 )
+text = "Stats"
+
 [node name="TutTab" type="Button" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 389.0
-margin_right = 515.0
+margin_left = 595.0
+margin_right = 740.0
 margin_bottom = 54.0
 rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
@@ -91,20 +101,22 @@ theme = SubResource( 2 )
 text = "How To Play"
 
 [node name="Buffer" type="Container" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 519.0
-margin_right = 771.0
+visible = false
+margin_left = 691.0
+margin_right = 758.0
 margin_bottom = 54.0
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
 
 [node name="VSeparator2" type="VSeparator" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 775.0
-margin_right = 779.0
+margin_left = 744.0
+margin_right = 748.0
 margin_bottom = 54.0
 
 [node name="TimerLabel" type="Label" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 783.0
+margin_left = 752.0
 margin_top = 17.0
-margin_right = 884.0
+margin_right = 868.0
 margin_bottom = 36.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
@@ -115,12 +127,12 @@ __meta__ = {
 }
 
 [node name="VSeparator" type="VSeparator" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 888.0
-margin_right = 892.0
+margin_left = 872.0
+margin_right = 876.0
 margin_bottom = 54.0
 
 [node name="Money" type="Label" parent="MainScreen/Panel/HBoxContainer"]
-margin_left = 896.0
+margin_left = 880.0
 margin_top = 17.0
 margin_right = 997.0
 margin_bottom = 36.0
@@ -232,6 +244,18 @@ better sell many egg at one time than one egg many time.
 but dont worry. 
 you wait, price go back. yay."
 
+[node name="Stats" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+margin_right = 989.0
+margin_bottom = 498.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="StatLabel" type="RichTextLabel" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats"]
+margin_right = 989.0
+margin_bottom = 14.0
+bbcode_enabled = true
+fit_content_height = true
+
 [node name="MarketTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
@@ -239,6 +263,7 @@ autostart = true
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/DinoTab" to="." method="_on_DinoTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/EggTab" to="." method="_on_EggTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/SettingTab" to="." method="_on_SettingTab_pressed"]
+[connection signal="pressed" from="MainScreen/Panel/HBoxContainer/Stats" to="." method="_on_Stats_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/TutTab" to="." method="_on_TutTab_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/Load" to="." method="_on_Load_pressed"]

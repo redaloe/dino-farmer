@@ -14,7 +14,7 @@
 		"diet": "Herbivore",
 		"period": 2,
 		"clutch":1,
-		"egg_price": 5,
+		"egg_price": 7,
 		"flags": []
 	},
 	"Herrerasaurus": {
