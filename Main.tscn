@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://name font.tres" type="DynamicFont" id=2]
@@ -9,6 +9,8 @@ default_font = ExtResource( 2 )
 
 [sub_resource type="Theme" id=1]
 default_font = ExtResource( 2 )
+
+[sub_resource type="ButtonGroup" id=5]
 
 [sub_resource type="Theme" id=4]
 default_font = ExtResource( 3 )
@@ -203,22 +205,81 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Settings" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
-visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Save" type="Button" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings"]
-margin_right = 989.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings"]
+margin_left = 394.0
+margin_right = 594.0
+margin_bottom = 24.0
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2"]
+margin_top = 5.0
+margin_right = 48.0
+margin_bottom = 18.0
+text = "Save file:"
+
+[node name="1" type="CheckBox" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2"]
+margin_left = 52.0
+margin_right = 86.0
+margin_bottom = 24.0
+pressed = true
+group = SubResource( 5 )
+text = "1"
+
+[node name="2" type="CheckBox" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2"]
+margin_left = 90.0
+margin_right = 124.0
+margin_bottom = 24.0
+group = SubResource( 5 )
+text = "2"
+
+[node name="3" type="CheckBox" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2"]
+margin_left = 128.0
+margin_right = 162.0
+margin_bottom = 24.0
+group = SubResource( 5 )
+text = "3"
+
+[node name="4" type="CheckBox" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2"]
+margin_left = 166.0
+margin_right = 200.0
+margin_bottom = 24.0
+group = SubResource( 5 )
+text = "4"
+
+[node name="Autosave" type="CheckButton" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings"]
+margin_left = 431.0
+margin_top = 28.0
+margin_right = 558.0
+margin_bottom = 68.0
+focus_mode = 0
+size_flags_horizontal = 4
+enabled_focus_mode = 0
+text = "Autosave"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings"]
+margin_left = 456.0
+margin_top = 72.0
+margin_right = 532.0
+margin_bottom = 91.0
+size_flags_horizontal = 4
+
+[node name="Save" type="Button" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer"]
+margin_right = 36.0
 margin_bottom = 19.0
+size_flags_horizontal = 4
 theme = SubResource( 4 )
 text = "Save"
 
-[node name="Load" type="Button" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings"]
-margin_top = 23.0
-margin_right = 989.0
-margin_bottom = 42.0
+[node name="Load" type="Button" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer"]
+margin_left = 40.0
+margin_right = 76.0
+margin_bottom = 19.0
+size_flags_horizontal = 4
 theme = SubResource( 4 )
 text = "Load"
 
@@ -245,6 +306,7 @@ but dont worry.
 you wait, price go back. yay."
 
 [node name="Stats" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -265,6 +327,7 @@ autostart = true
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/SettingTab" to="." method="_on_SettingTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/Stats" to="." method="_on_Stats_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/TutTab" to="." method="_on_TutTab_pressed"]
-[connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/Save" to="." method="_on_Save_pressed"]
-[connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/Load" to="." method="_on_Load_pressed"]
+[connection signal="toggled" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/Autosave" to="." method="_on_Autosave_toggled"]
+[connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer/Load" to="." method="_on_Load_pressed"]
 [connection signal="timeout" from="MarketTimer" to="." method="_on_MarketTimer_timeout"]

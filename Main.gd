@@ -67,6 +67,7 @@ func switch_panel(node:Control):
 	for b in a.get_children():
 		b.hide()
 	node.show()
+
 	
 func _on_DinoTab_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Dinos)
@@ -86,19 +87,22 @@ func _on_TutTab_pressed():
 func _on_Stats_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats)
 
-func _on_Save_pressed():
+func save_game():
 	var s= File.new()
-	if !(s.open("res://save.dat", File.WRITE)):
+	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
+	print(button)
+	if !(s.open("res://save%s.sav"%button, File.WRITE)):
 		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices]
 		print(save_data)
 		s.store_var(save_data)
 		s.close()
 	else:
 		print("Saving failed!")
-
-func _on_Load_pressed():
+		
+func load_game():
 	var s= File.new()
-	if !(s.open("res://save.dat", File.READ)):
+	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
+	if !(s.open("res://save%s.sav"%button, File.READ)):
 		var a=s.get_var()
 		print(a)
 		for dino in a[0]:
@@ -114,6 +118,12 @@ func _on_Load_pressed():
 	else:
 		print("Loading Failed!")
 
+func _on_Save_pressed():
+	save_game()
+
+func _on_Load_pressed():
+	load_game()
+
 
 func _on_MarketTimer_timeout():
 	for d in Game.market:
@@ -124,6 +134,8 @@ func _on_MarketTimer_timeout():
 			Game.market[d]+=correction
 		else:
 			Game.market[d]=Game.dino_list[d]["egg_price"]
+	if Game.autosave:
+		save_game()
 			
 func create_unknown_panel():
 	if Game.mystery_panel != null:
@@ -157,3 +169,9 @@ func visually_pleasing(number:int) -> String:
 		else:
 			return "%d$" % number
 	return "oopsie doopsie woopsie you made a fuckie wuckie uwu"
+
+
+func _on_Autosave_toggled(button_pressed):
+	Game.autosave=button_pressed
+	
+

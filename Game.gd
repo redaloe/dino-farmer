@@ -9,7 +9,7 @@ var eggs={}
 var market={}
 var dino_prices={}
 var stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
-
+var autosave=false
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
