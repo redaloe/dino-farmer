@@ -9,26 +9,60 @@
 		"Effect amount": 20
 	}
 	"bigger_storage":{
-		"Name": "Bigger Egg Warehouse",
-		"Description": "Don't put all your eggs in one basket. At Eggcelent Storage Solutions, we make sure each one of your eggs has its own luxury silk-lined basket.",
+		"Name": "Better Egg Storage",
+		"Description": "Luxury silk-lined baskets",
 		"Price": 5000,
 		"Unlock condition": "total_eggs",
 		"Unlock amount": 100
 		"Effect": "max_eggs",
 		"Effect amount": 50
 	}
+	
+	"descriptive_upgrades":{
+		"Name": "Better Upgrade Descriptions",
+		"Description": "Upgrades now tell you their precise effects, with like numbers and everything. This was originally going to be free but it was a pain to code so screw you, you have to work for it.",
+		"Price": 5000,
+		"Unlock condition": "total_eggs",
+		"Unlock amount": 100
+		"Effect": "max_eggs",
+		"Effect amount": 50
+	}
+	
+	"data":{
+		"Name": "Eggcell Spreadsheets",
+		"Description": "Turns out the bar at the top with all scary abbreviations was actually useful. Whoulda thunk?",
+		"Price": 5000,
+		"Unlock condition": "total_eggs",
+		"Unlock amount": 100
+		"Effect": "max_eggs",
+		"Effect amount": 50
+	}
+
 	"autosellers":{
-		"Name":""
-		
-		
+		"Name": "Hire Egg Merchant",
+		"Description": "Employ professional traders to sell your eggs for you. Sure, they can't tell eggs apart and they aren't very fast. But they're professionals alright",
+		"Price": 5000,
+		"Unlock condition": "total_money",
+		"Unlock amount": 10000
+		"Effect": "autoseller",
+		"Effect amount": 1
 	}
 	"sell_100":{
 		"Name": "Eggs In The Trunk",
-		"Description": "Your current strategy of carrying eggs and running with them to the market is proving ineffecient.",
+		"Description": "Your current strategy of carrying eggs and running with them to the market is proving ineffecient. Your friend Terry has this totally rad car and he's like, down to give you a ride whenever you need it, maaaaaan",
 		"Price": 5000,
 		"Unlock condition": "total_money",
 		"Unlock amount": 10000
 		"Effect": "sell_100",
+		"Effect amount": 1
+	}
+	"sell_all":{
+		"Name": "Eggs In The Truck",
+		"Description": "Your friend Terry told you about this really big car that can like, carry tons of eggs. You still don't believe him but it's worth a shot",
+		"Price": 5000,
+		"Unlock condition": "total_money",
+		"Unlock amount": 10000
+		"Effect": "sell_all",
 		"Effect amount": 1
 	}
 }
