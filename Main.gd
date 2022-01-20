@@ -110,11 +110,11 @@ func load_game():
 			if !(dino in Game.dinos):
 				add_dino_button(dino)
 		Game.dinos=a[0]
+		Game.dino_prices=a[5]
 		Game.eggs=a[1]
 		Game.money=a[2]
 		Game.market=a[3]
 		Game.stats=a[4]
-		Game.dino_prices=a[5]
 
 		s.close()
 	else:

@@ -11,25 +11,23 @@ onready var profitLabel=$Panel/HBoxContainer/VBoxContainer/Profit
 onready var priceLabel=$Panel/HBoxContainer/Price
 onready var amountLabel=$Panel/HBoxContainer/Amount
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	Game.dinos[fname]=0
 	Game.eggs[fname]=0
 	Game.stats["%s Eggs Produced" % fname]=0
 	nameLabel.text=fname
-	priceLabel.text=String(Game.dino_prices[fname])+"$"
-	amountLabel.text=String(Game.dinos[fname])
+#	amountLabel.text=String(Game.dinos[fname])
 	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
 	#profitLabel.bbcode_text="[center]Produces [color=purple]%d[/color] eggs every [color=purple]%d[/color] seconds[/center]" % [clutch,period]
 	$Timer.wait_time=period
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !(fname in Game.dinos):
 		print("zift")
 		queue_free()
 	else:
 		amountLabel.text="Owned: "+String(Game.dinos[fname])
+		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
 		if (Game.money<Game.dino_prices[fname]):
 			$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=true
 		else:
@@ -54,8 +52,6 @@ func _on_Button_pressed():
 		amountLabel.text=String(Game.dinos[fname])
 		Game.dino_prices[fname]=Game.dino_prices[fname]*price_coefficient
 		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
-
-
 
 func _on_Timer_timeout():
 	Game.eggs[fname]+=clutch*Game.dinos[fname]
