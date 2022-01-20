@@ -25,7 +25,7 @@ func _process(delta):
 		queue_free()
 	else:
 		amountLabel.text="Owned: "+String(Game.eggs[fname])
-		priceLabel.text="%.2f$" % Game.market[fname]
+		priceLabel.text=Game.visually_pleasing(Game.market[fname])
 		if(Game.eggs[fname]<1):
 			$Panel/HBoxContainer/Button.disabled=true
 		else:

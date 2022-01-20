@@ -18,7 +18,7 @@ func _ready():
 	nameLabel.text=fname
 #	amountLabel.text=String(Game.dinos[fname])
 	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
-	#profitLabel.bbcode_text="[center]Produces [color=purple]%d[/color] eggs every [color=purple]%d[/color] seconds[/center]" % [clutch,period]
+	profitLabel.bbcode_text="[center]Produces [color=yellow]%d[/color] eggs every [color=yellow]%d[/color] seconds[/center]" % [clutch,period]
 	$Timer.wait_time=period
 
 func _process(delta):
@@ -27,7 +27,7 @@ func _process(delta):
 		queue_free()
 	else:
 		amountLabel.text="Owned: "+String(Game.dinos[fname])
-		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
+		priceLabel.text=Game.visually_pleasing(Game.dino_prices[fname])
 		if (Game.money<Game.dino_prices[fname]):
 			$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=true
 		else:
@@ -51,7 +51,7 @@ func _on_Button_pressed():
 		Game.dinos[fname]+=1
 		amountLabel.text=String(Game.dinos[fname])
 		Game.dino_prices[fname]=Game.dino_prices[fname]*price_coefficient
-		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
+		priceLabel.text=Game.visually_pleasing(Game.dino_prices[fname])
 
 func _on_Timer_timeout():
 	Game.eggs[fname]+=clutch*Game.dinos[fname]

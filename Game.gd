@@ -19,6 +19,19 @@ var autosave=false
 func _ready():
 	pass # Replace with function body.
 
+func visually_pleasing(number:int) -> String:
+	var suffixes={3:"k",6:"m",9:"b",12:"t"}
+	var result
+	for p in suffixes:
+		if number/pow(10,p)>=1:
+			if p!=suffixes.keys()[suffixes.keys().size()-1] and number/pow(10,p+3)>=1:
+				continue
+			else:
+				result="%.2f%s$" % [(number/pow(10,p)),suffixes[p]]
+				return result
+		else:
+			return "%d$" % number
+	return "oopsie doopsie woopsie you made a fuckie wuckie uwu"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

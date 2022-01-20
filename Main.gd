@@ -32,7 +32,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	
-	money_label.text="Money: "+visually_pleasing(floor(Game.money))
+	money_label.text="Money: "+Game.visually_pleasing(floor(Game.money))
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	update_stats()
 	for dino in Game.dino_list:
@@ -158,19 +158,7 @@ func update_stats():
 	for stat in Game.stats:
 		stat_label.append_bbcode("%s: [color=gold]%d[/color] \n" % [stat,Game.stats[stat]])
 
-func visually_pleasing(number:int) -> String:
-	var suffixes={3:"k",6:"m",9:"b",12:"t"}
-	var result
-	for p in suffixes:
-		if number/pow(10,p)>=1:
-			if p!=suffixes.keys()[suffixes.keys().size()-1] and number/pow(10,p+3)>=1:
-				continue
-			else:
-				result="%.2f%s$" % [(number/pow(10,p)),suffixes[p]]
-				return result
-		else:
-			return "%d$" % number
-	return "oopsie doopsie woopsie you made a fuckie wuckie uwu"
+
 
 
 func _on_Autosave_toggled(button_pressed):
