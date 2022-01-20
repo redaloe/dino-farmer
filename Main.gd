@@ -156,7 +156,7 @@ func update_stats():
 	var stat_label=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats/StatLabel
 	stat_label.bbcode_text=""
 	for stat in Game.stats:
-		stat_label.append_bbcode("%s: [color=gold]%d[/color] \n" % [stat,Game.stats[stat]])
+		stat_label.append_bbcode("%s: [color=gold]%s[/color] \n" % [stat,Game.visually_pleasing(Game.stats[stat])])
 
 
 
