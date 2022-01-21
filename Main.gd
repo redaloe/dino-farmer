@@ -120,7 +120,7 @@ func save_game():
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
 	print(button)
 	if !(s.open("res://save%s.sav"%button, File.WRITE)):
-		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices,Game.completed_upgrades,Game.unlocked_upgrades]
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices,Game.completed_upgrades,Game.unlocked_upgrades,Game.upgrade_variables]
 		print("saving")
 		s.store_var(save_data)
 		s.close()
@@ -146,7 +146,8 @@ func load_game():
 #		Game.unlocked_upgrades=[]
 		if a.size()==8:
 			Game.unlocked_upgrades=a[7]
-			
+		if a.size()==9:
+			Game.upgrade_variables=a[8]
 			
 		s.close()
 	else:
@@ -162,7 +163,7 @@ func _on_Load_pressed():
 func _on_MarketTimer_timeout():
 	for d in Game.market:
 		var correction=(Game.dino_list[d]["egg_price"]-Game.market[d])*0.375
-		if abs(Game.dino_list[d]["egg_price"]-(Game.market[d]+correction))>0.5:
+		if abs(Game.dino_list[d]["egg_price"]-(Game.market[d]+correction))>0.25:
 		#if the difference between base price and corrected price is less than 0.5, just set price to base price
 		#to prevent zeno's paradox
 			Game.market[d]+=correction
@@ -198,6 +199,8 @@ func check_upgrade_condition(fname):
 	if conditions[cond]>=am:
 		add_upgrade_panel(fname)
 		Game.unlocked_upgrades.append(fname)
+
+		
 
 func _on_Autosave_toggled(button_pressed):
 	Game.autosave=button_pressed

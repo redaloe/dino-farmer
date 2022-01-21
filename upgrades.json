@@ -47,18 +47,18 @@
 	"sell_100": {
 		"name": "Eggs In The Trunk",
 		"description": "Your current strategy of carrying eggs and running with them to the market is proving ineffecient. A friend has this totally rad car and she's like, down to give you a ride whenever you need it, maaaaaan.",
-		"price": 5000,
+		"price": 1000,
 		"unlock_condition": "total_money",
-		"unlock_amount": 10000,
+		"unlock_amount": 1000,
 		"effect": "sell_100",
 		"effect_amount": 1
 	},
 	"sell_all": {
 		"name": "Eggs In The Truck",
 		"description": "A friend told you about this really big car that can like, carry tons of eggs. You still don't believe her but it's worth a shot.",
-		"price": 5000,
+		"price": 1000,
 		"unlock_condition": "total_money",
-		"unlock_amount": 10000,
+		"unlock_amount": 1000,
 		"effect": "sell_all",
 		"effect_amount": 1
 	}

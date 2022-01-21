@@ -20,6 +20,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Game.upgrade_variables["sell_100"]==1:
+		$Panel/HBoxContainer/Buy100.show()
+	else:
+		$Panel/HBoxContainer/Buy100.hide()
+	if Game.upgrade_variables["sell_all"]==1:
+		$Panel/HBoxContainer/BuyAll.show()
+	else:
+		$Panel/HBoxContainer/BuyAll.hide()
 	if !(fname in Game.dinos):
 		print("zift")
 		queue_free()
@@ -27,11 +35,47 @@ func _process(_delta):
 		amountLabel.text="Owned: "+String(Game.eggs[fname])
 		priceLabel.text=Game.visually_pleasing(Game.market[fname])
 		if(Game.eggs[fname]<1):
-			$Panel/HBoxContainer/Button.disabled=true
+			$Panel/HBoxContainer/Buy.disabled=true
+			$Panel/HBoxContainer/Buy100.disabled=true
+			$Panel/HBoxContainer/BuyAll.disabled=true
 		else:
-			$Panel/HBoxContainer/Button.disabled=false
+			$Panel/HBoxContainer/Buy.disabled=false
+			$Panel/HBoxContainer/Buy100.disabled=false
+			$Panel/HBoxContainer/BuyAll.disabled=false
 
 func _on_Button_pressed():
+	if(Input.is_key_pressed(KEY_SHIFT)):
+		if(Game.eggs[fname]>=10):
+			print("meep")
+			Game.add_money(Game.market[fname]*10)
+			Game.market[fname]=Game.market[fname]/1.1
+			Game.stats["Eggs Sold (all-time)"]+=10
+			Game.eggs[fname]-=10
+		elif(Game.eggs[fname]<10):
+			Game.add_money(Game.market[fname]*Game.eggs[fname])
+			Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
+			Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
+			Game.eggs[fname]=0
+	elif(Game.eggs[fname]>0):
+		Game.add_money(Game.market[fname])
+		Game.market[fname]=Game.market[fname]/(1.004)
+		Game.stats["Eggs Sold (all-time)"]+=1
+		Game.eggs[fname]-=1
+
+		
+func _on_Buy100_pressed():
+	if(Game.eggs[fname]>=100):
+		Game.add_money(Game.market[fname]*100)
+		Game.market[fname]=Game.market[fname]/((1)+1)
+		Game.stats["Eggs Sold (all-time)"]+=100
+		Game.eggs[fname]-=100
+	if(Game.eggs[fname]<100):
+		Game.add_money(Game.market[fname]*Game.eggs[fname])
+		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
+		Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
+		Game.eggs[fname]=0
+		
+func _on_BuyAll_pressed():
 	if(Game.eggs[fname]>0):
 		Game.add_money(Game.market[fname]*Game.eggs[fname])
 		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)

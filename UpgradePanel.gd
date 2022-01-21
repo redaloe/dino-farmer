@@ -36,9 +36,9 @@ func _on_Button_pressed():
 	if Game.money>=price:
 		Game.money-=price
 		if eff=="money":
-			Game.money+=am
+			Game.add_money(am)
 		else:
-			effects[eff]+=am
+			Game.upgrade_variables[eff]+=am
 	Game.completed_upgrades.append(fname)
 	Game.unlocked_upgrades.pop_at(Game.unlocked_upgrades.find(fname))
 	queue_free()
