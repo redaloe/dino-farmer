@@ -114,6 +114,7 @@ func _on_TutTab_pressed():
 
 func _on_Stats_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats)
+#	Game.money+=50
 
 func save_game():
 	var s= File.new()
@@ -210,4 +211,4 @@ func _on_Autosave_toggled(button_pressed):
 
 func _on_Upgrades_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades)
-	Game.money+=50
+

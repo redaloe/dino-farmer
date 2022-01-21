@@ -110,7 +110,7 @@ rect_min_size = Vector2( 100, 54 )
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 theme = SubResource( 2 )
-text = "How To Play"
+text = "Tips"
 
 [node name="Buffer" type="Container" parent="MainScreen/Panel/HBoxContainer"]
 visible = false
@@ -309,7 +309,6 @@ theme = SubResource( 4 )
 text = "Load"
 
 [node name="Tut" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
-visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -321,14 +320,17 @@ margin_bottom = 498.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 3 )
-text = "you buy dino. 
-dino make egg. 
-sell egg, make money. 
-but watch out! 
-sell too much egg, price go down. 
-better sell many egg at one time than one egg many time.
-but dont worry. 
-you wait, price go back. yay."
+bbcode_enabled = true
+bbcode_text = "- Buy dinosaurs. Sell their eggs. Make money. Buyc"
+text = "- Buy dinosaurs. Sell their eggs. Make money. Buy more dinos and upgrade your farm. Sell more eggs. Make more money. Repeat.
+
+- Selling eggs lowers their price. It's always better to sell in bulk!
+
+- More upgrades will unlock as you progress, allowing you to raise your dino and egg cap, sell eggs faster, and more.
+
+- The optimal strategy will change as you unlock more features. Don't be afraid to sell your dinos and replace them with others
+
+"
 
 [node name="Stats" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
 visible = false
