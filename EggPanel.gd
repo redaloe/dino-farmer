@@ -19,7 +19,7 @@ func _ready():
 	Game.eggs[fname]=0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if !(fname in Game.dinos):
 		print("zift")
 		queue_free()

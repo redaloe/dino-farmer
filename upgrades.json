@@ -1,69 +1,65 @@
 {
 	"bigger_coops": {
-		"Name": "Bigger Coops",
-		"Description": "Your dinosaurs are living in crowded, dirty conditions. Buy a bigger coop so you can make more dinosaurs live in crowded and dirty conditions!",
-		"Price": 5000,
-		"Unlock condition": "current_dinos",
-		"Unlock amount": 20
-		"Effect": "max_dinos",
-		"Effect amount": 20
-	}
-	"bigger_storage":{
-		"Name": "Better Egg Storage",
-		"Description": "Luxury silk-lined baskets",
-		"Price": 5000,
-		"Unlock condition": "total_eggs",
-		"Unlock amount": 100
-		"Effect": "max_eggs",
-		"Effect amount": 50
-	}
-	
-	"descriptive_upgrades":{
-		"Name": "Better Upgrade Descriptions",
-		"Description": "Upgrades now tell you their precise effects, with like numbers and everything. This was originally going to be free but it was a pain to code so screw you, you have to work for it.",
-		"Price": 5000,
-		"Unlock condition": "total_eggs",
-		"Unlock amount": 100
-		"Effect": "max_eggs",
-		"Effect amount": 50
-	}
-	
-	"data":{
-		"Name": "Eggcell Spreadsheets",
-		"Description": "Turns out the bar at the top with all scary abbreviations was actually useful. Whoulda thunk?",
-		"Price": 5000,
-		"Unlock condition": "total_eggs",
-		"Unlock amount": 100
-		"Effect": "max_eggs",
-		"Effect amount": 50
-	}
-
-	"autosellers":{
-		"Name": "Hire Egg Merchant",
-		"Description": "Employ professional traders to sell your eggs for you. Sure, they can't tell eggs apart and they aren't very fast. But they're professionals alright",
-		"Price": 5000,
-		"Unlock condition": "total_money",
-		"Unlock amount": 10000
-		"Effect": "autoseller",
-		"Effect amount": 1
-	}
-	"sell_100":{
-		"Name": "Eggs In The Trunk",
-		"Description": "Your current strategy of carrying eggs and running with them to the market is proving ineffecient. Your friend Terry has this totally rad car and he's like, down to give you a ride whenever you need it, maaaaaan",
-		"Price": 5000,
-		"Unlock condition": "total_money",
-		"Unlock amount": 10000
-		"Effect": "sell_100",
-		"Effect amount": 1
-	}
-	"sell_all":{
-		"Name": "Eggs In The Truck",
-		"Description": "Your friend Terry told you about this really big car that can like, carry tons of eggs. You still don't believe him but it's worth a shot",
-		"Price": 5000,
-		"Unlock condition": "total_money",
-		"Unlock amount": 10000
-		"Effect": "sell_all",
-		"Effect amount": 1
+		"name": "Bigger Coops",
+		"description": "Your dinosaurs are living in crowded, dirty conditions. Buy a bigger coop so you can make more dinosaurs live in crowded and dirty conditions!",
+		"price": 5000,
+		"unlock_condition": "money",
+		"unlock_amount": 2000,
+		"effect": "max_dinos",
+		"effect_amount": 20
+	},
+	"bigger_storage": {
+		"name": "Better Egg Storage",
+		"description": "Luxury silk-lined baskets.",
+		"price": 5000,
+		"unlock_condition": "total_eggs",
+		"unlock_amount": 100,
+		"effect": "max_eggs",
+		"effect_amount": 50
+	},
+	"descriptive_upgrades": {
+		"name": "Better Upgrade descriptions",
+		"description": "Upgrades now tell you their precise effects, with like numbers and everything. This was originally going to be free but it was a pain to code so screw you, you have to work for it.",
+		"price": 5000,
+		"unlock_condition": "total_eggs",
+		"unlock_amount": 100,
+		"effect": "max_eggs",
+		"effect_amount": 50
+	},
+	"data": {
+		"name": "Eggcell Spreadsheets",
+		"description": "Turns out the bar at the top with all scary abbreviations was actually useful. Whoulda thunk?",
+		"price": 5000,
+		"unlock_condition": "total_eggs",
+		"unlock_amount": 100,
+		"effect": "max_eggs",
+		"effect_amount": 50
+	},
+	"autosellers": {
+		"name": "Hire Egg Merchant",
+		"description": "Employ professional traders to sell your eggs for you. Sure, they can't tell eggs apart and they aren't very fast. But they're professionals alright.",
+		"price": 5000,
+		"unlock_condition": "total_money",
+		"unlock_amount": 10000,
+		"effect": "autoseller",
+		"effect_amount": 1
+	},
+	"sell_100": {
+		"name": "Eggs In The Trunk",
+		"description": "Your current strategy of carrying eggs and running with them to the market is proving ineffecient. A friend has this totally rad car and she's like, down to give you a ride whenever you need it, maaaaaan.",
+		"price": 5000,
+		"unlock_condition": "total_money",
+		"unlock_amount": 10000,
+		"effect": "sell_100",
+		"effect_amount": 1
+	},
+	"sell_all": {
+		"name": "Eggs In The Truck",
+		"description": "A friend told you about this really big car that can like, carry tons of eggs. You still don't believe her but it's worth a shot.",
+		"price": 5000,
+		"unlock_condition": "total_money",
+		"unlock_amount": 10000,
+		"effect": "sell_all",
+		"effect_amount": 1
 	}
 }
-

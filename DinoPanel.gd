@@ -21,7 +21,7 @@ func _ready():
 	profitLabel.bbcode_text="[center]Produces [color=yellow]%d[/color] eggs every [color=yellow]%d[/color] seconds[/center]" % [clutch,period]
 	$Timer.wait_time=period
 
-func _process(delta):
+func _process(_delta):
 	if !(fname in Game.dinos):
 		print("zift")
 		queue_free()
