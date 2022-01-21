@@ -10,6 +10,7 @@ var eggs={}
 var market={}
 var dino_prices={}
 var unlocked_upgrades=[]
+var completed_upgrades=[]
 var stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
 var autosave=false
 # Declare member variables here. Examples:

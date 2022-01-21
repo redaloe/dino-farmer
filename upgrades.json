@@ -2,11 +2,11 @@
 	"bigger_coops": {
 		"name": "Bigger Coops",
 		"description": "Your dinosaurs are living in crowded, dirty conditions. Buy a bigger coop so you can make more dinosaurs live in crowded and dirty conditions!",
-		"price": 5000,
+		"price": 200,
 		"unlock_condition": "money",
 		"unlock_amount": 2000,
-		"effect": "max_dinos",
-		"effect_amount": 20
+		"effect": "money",
+		"effect_amount": 1200
 	},
 	"bigger_storage": {
 		"name": "Better Egg Storage",

@@ -53,7 +53,7 @@ func _process(_delta):
 					add_dino_button(dino)
 	
 	for upgrade in Game.upgrade_list:
-		if !(upgrade in Game.unlocked_upgrades):
+		if !(upgrade in Game.unlocked_upgrades or upgrade in Game.completed_upgrades):
 			check_upgrade_condition(upgrade)
 
 #func add_sprite(sprite):
@@ -84,7 +84,8 @@ func add_upgrade_panel(fname:String):
 	var p= load("res://UpgradePanel.tscn")
 	var d= Game.upgrade_list[fname]
 	var tri= p.instance()
-	tri.fname=d["name"]
+	tri.display_name=d["name"]
+	tri.fname=fname
 	tri.price=d["price"]
 	tri.description=d["description"]
 #	tri.clutch=d["clutch"]
@@ -189,7 +190,7 @@ func check_upgrade_condition(fname):
 	var u=Game.upgrade_list[fname]
 	var cond=u["unlock_condition"]
 	var am=u["unlock_amount"]
-	if conditions[cond]>am:
+	if conditions[cond]>=am:
 		add_upgrade_panel(fname)
 		Game.unlocked_upgrades.append(fname)
 
@@ -201,3 +202,4 @@ func _on_Autosave_toggled(button_pressed):
 
 func _on_Upgrades_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades)
+	Game.money+=50
