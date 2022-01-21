@@ -17,6 +17,10 @@ func _process(_delta):
 	if !(fname in Game.unlocked_upgrades):
 		print("zift")
 		queue_free()
+	if fname in Game.completed_upgrades:
+		print("zift2")
+		queue_free()
+	
 	else:
 		if (Game.money<Game.upgrade_list[fname]["price"]):
 			$Panel/HBoxContainer/VBoxContainer2/Buy.disabled=true
@@ -36,4 +40,5 @@ func _on_Button_pressed():
 		else:
 			effects[eff]+=am
 	Game.completed_upgrades.append(fname)
+	Game.unlocked_upgrades.pop_at(Game.unlocked_upgrades.find(fname))
 	queue_free()

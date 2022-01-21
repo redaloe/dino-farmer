@@ -120,7 +120,7 @@ func save_game():
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
 	print(button)
 	if !(s.open("res://save%s.sav"%button, File.WRITE)):
-		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices]
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices,Game.completed_upgrades,Game.unlocked_upgrades]
 		print("saving")
 		s.store_var(save_data)
 		s.close()
@@ -142,7 +142,12 @@ func load_game():
 		Game.money=a[2]
 		Game.market=a[3]
 		Game.stats=a[4]
-
+		Game.completed_upgrades=a[6]
+#		Game.unlocked_upgrades=[]
+		if a.size()==8:
+			Game.unlocked_upgrades=a[7]
+			
+			
 		s.close()
 	else:
 		print("Loading Failed!")
