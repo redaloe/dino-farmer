@@ -12,14 +12,14 @@ onready var priceLabel=$Panel/HBoxContainer/Price
 onready var amountLabel=$Panel/HBoxContainer/Amount
 
 func _ready():
-	Game.dinos[fname]=0
-	Game.eggs[fname]=0
-	Game.stats["%s Eggs Produced" % fname]=0
-	nameLabel.text=fname
-#	amountLabel.text=String(Game.dinos[fname])
-	profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
-	profitLabel.bbcode_text="[center]Produces [color=yellow]%d[/color] eggs every [color=yellow]%d[/color] seconds[/center]" % [clutch,period]
-	$Timer.wait_time=period
+		Game.dinos[fname]=0
+		Game.eggs[fname]=0
+		Game.stats["%s Eggs Produced" % fname]=0
+		nameLabel.text=fname
+	#	amountLabel.text=String(Game.dinos[fname])
+		profitLabel.text="Produces "+String(clutch)+" eggs every "+String(period)+" seconds"
+		profitLabel.bbcode_text="[center]Produces [color=yellow]%d[/color] eggs every [color=yellow]%d[/color] seconds[/center]" % [clutch,period]
+		$Timer.wait_time=period
 
 func _process(_delta):
 	if !(fname in Game.dinos):

@@ -15,7 +15,7 @@ var market={}
 var dino_prices={}
 var stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
 var upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20}
-var autosave=false
+var autosave=true
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

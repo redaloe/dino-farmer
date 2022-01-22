@@ -38,7 +38,7 @@ func _ready():
 	Game.money=r[starter_dino]["price"]
 	add_dino_button(starter_dino)
 	add_unknown_panel()
-	#load_game()
+	load_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -69,18 +69,19 @@ func _process(_delta):
 #	print(dino_grid.get_children())
 
 func add_dino_button(fname:String):
-	var d=Game.dino_list[fname]
-	var tri= dino_panel.instance()
-	tri.fname=fname
-	Game.dino_prices[fname]=d["price"]
-	tri.period=d["period"]
-	tri.clutch=d["clutch"]
-	dino_list.add_child(tri)
-	var bi= egg_panel.instance()
-	bi.fname=fname
-	bi.price=d["egg_price"]
-	egg_list.add_child(bi)
-	add_unknown_panel()
+	if !(fname in Game.dinos.keys()):
+		var d=Game.dino_list[fname]
+		var tri= dino_panel.instance()
+		tri.fname=fname
+		Game.dino_prices[fname]=d["price"]
+		tri.period=d["period"]
+		tri.clutch=d["clutch"]
+		dino_list.add_child(tri)
+		var bi= egg_panel.instance()
+		bi.fname=fname
+		bi.price=d["egg_price"]
+		egg_list.add_child(bi)
+		add_unknown_panel()
 
 func add_upgrade_panel(fname:String):
 	var p= load("res://UpgradePanel.tscn")
@@ -157,8 +158,26 @@ func load_game():
 		for n in Game.eggs.values():
 			Game.current_eggs+=n
 	else:
-		print("Loading Failed!")
+			print("Empty save. Creating new game")
+			
+			Game.dinos={}
+			Game.dino_prices={}
+			Game.eggs={}
+			Game.money=Game.dino_list[starter_dino]["price"]
+			Game.market={}
+			Game.stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
+			Game.upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20}
+			Game.current_dinos=0
+			Game.current_eggs=0
+			for d in dino_list.get_children():
+				if d.name!="DinoCount":
+					d.queue_free()
+			for d in egg_list.get_children():
+				if d.name!="EggCount":
+					d.queue_free()
+			add_dino_button(starter_dino)
 
+		
 func _on_Save_pressed():
 	save_game()
 
@@ -217,3 +236,13 @@ func _on_Autosave_toggled(button_pressed):
 func _on_Upgrades_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades)
 
+
+
+func _on_Delete_pressed():
+	var d=Directory.new()
+	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
+	print(button)
+	if !(d.remove("res://save%s.sav"%button)):
+		print("deleting successful")
+	else:
+		print("deleting failed!")
