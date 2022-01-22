@@ -41,19 +41,25 @@ func _on_Sell_pressed():
 	if(Game.dinos[fname]>=1):
 		Game.money+=Game.dino_prices[fname]*0.75
 		Game.dinos[fname]-=1
+		Game.current_dinos-=1
 		amountLabel.text=String(Game.dinos[fname])
 		Game.dino_prices[fname]=Game.dino_prices[fname]/price_coefficient
 		priceLabel.text=String(ceil(Game.dino_prices[fname]))+"$"
 
 func _on_Button_pressed():
-	if(Game.money>=Game.dino_prices[fname]):
+	if(Game.money>=Game.dino_prices[fname]) and (Game.current_dinos<Game.upgrade_variables["max_dinos"]):
 		Game.money-=Game.dino_prices[fname]
 		Game.dinos[fname]+=1
+		Game.current_dinos+=1
 		amountLabel.text=String(Game.dinos[fname])
 		Game.dino_prices[fname]=Game.dino_prices[fname]*price_coefficient
 		priceLabel.text=Game.visually_pleasing(Game.dino_prices[fname])
+	else:
+		print(Game.upgrade_variables["max_dinos"])
 
 func _on_Timer_timeout():
-	Game.eggs[fname]+=clutch*Game.dinos[fname]
-	Game.stats["%s Eggs Produced" % fname]+=clutch*Game.dinos[fname]
-	Game.stats["Eggs Produced (all-time)"]+=clutch*Game.dinos[fname]
+	if(Game.current_eggs<Game.upgrade_variables["max_eggs"]):
+		Game.eggs[fname]+=clutch*Game.dinos[fname]
+		Game.stats["%s Eggs Produced" % fname]+=clutch*Game.dinos[fname]
+		Game.stats["Eggs Produced (all-time)"]+=clutch*Game.dinos[fname]
+		Game.current_eggs+=clutch*Game.dinos[fname]

@@ -13,7 +13,8 @@ onready var dino_panel= load("res://DinoPanel.tscn")
 onready var mystery_panel= load("res://MysteryPanel.tscn")
 onready var money_label=$MainScreen/Panel/HBoxContainer/Money
 onready var timer_label=$MainScreen/Panel/HBoxContainer/TimerLabel
-#onready var dino_grid=$MainScreen/Panel/MarginContainer/DinoGrid
+onready var dino_label=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Dinos/DinoCount
+onready var egg_label=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Eggs/EggCount
 var starter_dino="Eoraptor"
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,7 +43,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-
+	dino_label.text="Dinosaurs: %d/%d" % [Game.current_dinos,Game.upgrade_variables["max_dinos"]]
+	egg_label.text="Eggs: %d/%d" % [Game.current_eggs,Game.upgrade_variables["max_eggs"]]
 	money_label.text="Money: "+Game.visually_pleasing(Game.money)
 	timer_label.text="Egg market updates in: %02d" % ($MarketTimer.time_left+1)
 	update_stats()
@@ -114,7 +116,7 @@ func _on_TutTab_pressed():
 
 func _on_Stats_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats)
-#	Game.money+=50
+	Game.money+=500
 
 func save_game():
 	var s= File.new()
@@ -149,8 +151,11 @@ func load_game():
 			Game.unlocked_upgrades=a[7]
 		if a.size()==9:
 			Game.upgrade_variables=a[8]
-			
 		s.close()
+		for n in Game.dinos.values():
+			Game.current_dinos+=n
+		for n in Game.eggs.values():
+			Game.current_eggs+=n
 	else:
 		print("Loading Failed!")
 

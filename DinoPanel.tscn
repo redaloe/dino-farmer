@@ -92,9 +92,9 @@ margin_right = 242.0
 margin_bottom = 45.0
 
 [node name="Buy" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
-margin_top = 13.0
+margin_top = 1.0
 margin_right = 30.0
-margin_bottom = 32.0
+margin_bottom = 20.0
 rect_pivot_offset = Vector2( -321, 155 )
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -102,10 +102,9 @@ theme = SubResource( 2 )
 text = "Buy"
 
 [node name="Sell" type="Button" parent="Panel/HBoxContainer/VBoxContainer2"]
-visible = false
-margin_top = 23.0
+margin_top = 26.0
 margin_right = 30.0
-margin_bottom = 42.0
+margin_bottom = 45.0
 hint_tooltip = "Gives 75% of original price"
 theme = SubResource( 4 )
 text = "Sell"

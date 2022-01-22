@@ -51,16 +51,19 @@ func _on_Button_pressed():
 			Game.market[fname]=Game.market[fname]/1.1
 			Game.stats["Eggs Sold (all-time)"]+=10
 			Game.eggs[fname]-=10
+			Game.current_eggs-=10
 		elif(Game.eggs[fname]<10):
 			Game.add_money(Game.market[fname]*Game.eggs[fname])
 			Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
 			Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
 			Game.eggs[fname]=0
+			Game.current_eggs=0
 	elif(Game.eggs[fname]>0):
 		Game.add_money(Game.market[fname])
 		Game.market[fname]=Game.market[fname]/(1.004)
 		Game.stats["Eggs Sold (all-time)"]+=1
 		Game.eggs[fname]-=1
+		Game.current_eggs-=1
 
 		
 func _on_Buy100_pressed():
@@ -69,11 +72,13 @@ func _on_Buy100_pressed():
 		Game.market[fname]=Game.market[fname]/((1)+1)
 		Game.stats["Eggs Sold (all-time)"]+=100
 		Game.eggs[fname]-=100
+		Game.current_eggs-=100
 	if(Game.eggs[fname]<100):
 		Game.add_money(Game.market[fname]*Game.eggs[fname])
 		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
 		Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
 		Game.eggs[fname]=0
+		Game.current_eggs=0
 		
 func _on_BuyAll_pressed():
 	if(Game.eggs[fname]>0):
@@ -81,6 +86,7 @@ func _on_BuyAll_pressed():
 		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
 		Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
 		Game.eggs[fname]=0
+		Game.current_eggs=0
 
 
 
