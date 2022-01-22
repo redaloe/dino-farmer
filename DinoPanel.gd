@@ -26,6 +26,10 @@ func _process(_delta):
 		print("zift")
 		queue_free()
 	else:
+		if Game.current_dinos==1:
+			$Panel/HBoxContainer/VBoxContainer2/Sell.hint_tooltip="Gives back 100% of original price"
+		else:
+			$Panel/HBoxContainer/VBoxContainer2/Sell.hint_tooltip="Gives back 75% of original price"
 		amountLabel.text="Owned: "+String(Game.dinos[fname])
 		priceLabel.text=Game.visually_pleasing(Game.dino_prices[fname])
 		if (Game.money<Game.dino_prices[fname]):
@@ -39,7 +43,10 @@ func _process(_delta):
 		
 func _on_Sell_pressed():
 	if(Game.dinos[fname]>=1):
-		Game.money+=Game.dino_prices[fname]*0.75
+		if Game.current_dinos==1:
+			Game.money+=Game.dino_prices[fname]/price_coefficient
+		else:
+			Game.money+=Game.dino_prices[fname]*0.75
 		Game.dinos[fname]-=1
 		Game.current_dinos-=1
 		amountLabel.text=String(Game.dinos[fname])

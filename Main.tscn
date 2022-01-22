@@ -333,8 +333,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource( 3 )
 bbcode_enabled = true
-bbcode_text = "- Buy dinosaurs. Sell their eggs. Make money. Buyc"
-text = "- Buy dinosaurs. Sell their eggs. Make money. Buyc"
+bbcode_text = "- Buy dinosaurs. Sell their eggs. Make money. Buy more dinosaurs. make more money. repeat
+
+- Selling eggs lowers their price. It's always better to sell in bulk, or a variety of eggs.
+
+- Don't worry though, egg prices will go back up given time.
+
+-Upgrades will unlock as you progress through the game, allowing to buy more dinos, sell faster, and more.
+
+-The optimal strategy will change as you unlock more features. Don't be afraid to sell your dinos and replace them with others "
+text = "- Buy dinosaurs. Sell their eggs. Make money. Buy more dinosaurs. make more money. repeat
+
+- Selling eggs lowers their price. It's always better to sell in bulk, or a variety of eggs.
+
+- Don't worry though, egg prices will go back up given time.
+
+-Upgrades will unlock as you progress through the game, allowing to buy more dinos, sell faster, and more.
+
+-The optimal strategy will change as you unlock more features. Don't be afraid to sell your dinos and replace them with others "
 
 [node name="Stats" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
 visible = false
