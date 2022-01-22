@@ -73,7 +73,7 @@ func _on_Buy100_pressed():
 		Game.stats["Eggs Sold (all-time)"]+=100
 		Game.eggs[fname]-=100
 		Game.current_eggs-=100
-	if(Game.eggs[fname]<100):
+	elif(Game.eggs[fname]<100):
 		Game.add_money(Game.market[fname]*Game.eggs[fname])
 		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
 		Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
