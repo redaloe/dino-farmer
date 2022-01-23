@@ -84,6 +84,8 @@ func add_dino_button(fname:String):
 		add_unknown_panel()
 
 func add_upgrade_panel(fname:String):
+	var rep_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/RepeatableUpgrades
+	var unq_list=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/UniqueUpgrades
 	var p= load("res://UpgradePanel.tscn")
 	var d= Game.upgrade_list[fname]
 	var tri= p.instance()
@@ -91,8 +93,12 @@ func add_upgrade_panel(fname:String):
 	tri.fname=fname
 	tri.price=d["price"]
 	tri.description=d["description"]
+	tri.repeatable=d["repeatable"]
 #	tri.clutch=d["clutch"]
-	upgrade_panels.add_child(tri)
+	if d["repeatable"]:
+		rep_list.add_child(tri)
+	else:
+		unq_list.add_child(tri)
 
 func switch_panel(node:Control):
 	var a=$MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer

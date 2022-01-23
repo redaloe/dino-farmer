@@ -14,7 +14,7 @@ var eggs={}
 var market={}
 var dino_prices={}
 var stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
-var upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20}
+var upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20,"autosellers":0}
 var autosave=true
 # Declare member variables here. Examples:
 # var a = 2
@@ -45,3 +45,13 @@ func visually_pleasing(number:int) -> String:
 func add_money(amount:float):
 	money+=amount
 	stats["Money (all-time)"]+=amount
+
+func autosell():
+	for x in range(0,upgrade_variables["autosellers"]):
+#		var randint=randi%Game
+		Game.add_money(Game.market[fname])
+		Game.market[fname]=Game.market[fname]/(1.004)
+		Game.stats["Eggs Sold (all-time)"]+=1
+		Game.eggs[fname]-=1
+		Game.current_eggs-=1 
+	

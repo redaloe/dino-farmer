@@ -201,6 +201,7 @@ __meta__ = {
 }
 
 [node name="Dinos" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -225,11 +226,39 @@ margin_bottom = 30.0
 text = "Eggs: 0/20"
 
 [node name="Upgrades" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
-visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="RepeatableUpgrades" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades"]
+margin_right = 989.0
+margin_bottom = 21.0
+
+[node name="Label" type="Label" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/RepeatableUpgrades"]
+margin_right = 989.0
+margin_bottom = 13.0
+text = "Repeatable Upgrades"
+
+[node name="HSeparator" type="HSeparator" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/RepeatableUpgrades"]
+margin_top = 17.0
+margin_right = 989.0
+margin_bottom = 21.0
+
+[node name="UniqueUpgrades" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades"]
+margin_top = 25.0
+margin_right = 989.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/UniqueUpgrades"]
+margin_right = 989.0
+margin_bottom = 13.0
+text = "Unique Upgrades"
+
+[node name="HSeparator" type="HSeparator" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/UniqueUpgrades"]
+margin_top = 17.0
+margin_right = 989.0
+margin_bottom = 21.0
 
 [node name="Settings" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
 visible = false

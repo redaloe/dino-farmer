@@ -3,6 +3,7 @@ extends MarginContainer
 var fname
 var display_name
 var description
+var repeatable
 var price
 onready var name_label=$Panel/HBoxContainer/VBoxContainer/Name
 onready var desc_label=$Panel/HBoxContainer/Description
@@ -41,4 +42,5 @@ func _on_Button_pressed():
 			Game.upgrade_variables[eff]+=am
 	Game.completed_upgrades.append(fname)
 	Game.unlocked_upgrades.pop_at(Game.unlocked_upgrades.find(fname))
-	queue_free()
+	if !repeatable:
+		queue_free()
