@@ -42,11 +42,11 @@
 	"autosellers": {
 		"name": "Hire Egg Merchant",
 		"description": "Employ professional traders to sell your eggs for you. Sure, they can't tell eggs apart and they aren't very fast. But they're professionals alright.",
-		"price": 5000,
-		"repeatable":False,
-		"unlock_condition": "total_money",
+		"price": 10000,
+		"repeatable":True,
+		"unlock_condition": "total_eggs",
 		"unlock_amount": 10000,
-		"effect": "autoseller",
+		"effect": "autosellers",
 		"effect_amount": 1
 	},
 	"sell_100": {

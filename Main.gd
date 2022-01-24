@@ -252,3 +252,7 @@ func _on_Delete_pressed():
 		print("deleting successful")
 	else:
 		print("deleting failed!")
+
+
+func _on_AutosellTimer_timeout():
+	pass # Replace with function body.
