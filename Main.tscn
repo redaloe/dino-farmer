@@ -407,6 +407,9 @@ fit_content_height = true
 wait_time = 10.0
 autostart = true
 
+[node name="AutosellTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/DinoTab" to="." method="_on_DinoTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/EggTab" to="." method="_on_EggTab_pressed"]
 [connection signal="pressed" from="MainScreen/Panel/HBoxContainer/Upgrades" to="." method="_on_Upgrades_pressed"]
@@ -418,3 +421,4 @@ autostart = true
 [connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer/Load" to="." method="_on_Load_pressed"]
 [connection signal="pressed" from="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer/Delete" to="." method="_on_Delete_pressed"]
 [connection signal="timeout" from="MarketTimer" to="." method="_on_MarketTimer_timeout"]
+[connection signal="timeout" from="AutosellTimer" to="." method="_on_AutosellTimer_timeout"]

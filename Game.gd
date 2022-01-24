@@ -1,5 +1,6 @@
 extends Node
 
+var version=1
 var dino_list
 var upgrade_list
 var mystery_panel
@@ -48,10 +49,11 @@ func add_money(amount:float):
 
 func autosell():
 	for x in range(0,upgrade_variables["autosellers"]):
-#		var randint=randi%Game
-		Game.add_money(Game.market[fname])
-		Game.market[fname]=Game.market[fname]/(1.004)
-		Game.stats["Eggs Sold (all-time)"]+=1
-		Game.eggs[fname]-=1
-		Game.current_eggs-=1 
+		var randint=randi()%eggs.keys().size()
+		var fname=eggs.keys()[randint]
+		add_money(market[fname])
+		market[fname]=market[fname]/(1.004)
+		stats["Eggs Sold (all-time)"]+=1
+		eggs[fname]-=1
+		current_eggs-=1 
 	

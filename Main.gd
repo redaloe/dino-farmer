@@ -130,7 +130,7 @@ func save_game():
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
 	print(button)
 	if !(s.open("res://save%s.sav"%button, File.WRITE)):
-		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices,Game.completed_upgrades,Game.unlocked_upgrades,Game.upgrade_variables]
+		var save_data=[Game.dinos,Game.eggs,Game.money,Game.market,Game.stats,Game.dino_prices,Game.completed_upgrades,Game.unlocked_upgrades,Game.upgrade_variables,Game.version]
 		print("saving")
 		s.store_var(save_data)
 		s.close()
@@ -140,7 +140,7 @@ func save_game():
 func load_game():
 	var s= File.new()
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
-	if !(s.open("res://save%s.sav"%button, File.READ)):
+	if !(s.open("res://save%s.sav"%button, File.READ)) and s.get_var()[9]==Game.version:
 		var a=s.get_var()
 		print("loading")
 		for dino in a[0]: # this HAS to be before game.dinos=a[0] or else it wont work
@@ -154,10 +154,8 @@ func load_game():
 		Game.stats=a[4]
 		Game.completed_upgrades=a[6]
 #		Game.unlocked_upgrades=[]
-		if a.size()==8:
-			Game.unlocked_upgrades=a[7]
-		if a.size()==9:
-			Game.upgrade_variables=a[8]
+		Game.unlocked_upgrades=a[7]
+		Game.upgrade_variables=a[8]
 		s.close()
 		for n in Game.dinos.values():
 			Game.current_dinos+=n
@@ -172,7 +170,7 @@ func load_game():
 			Game.money=Game.dino_list[starter_dino]["price"]
 			Game.market={}
 			Game.stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
-			Game.upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20}
+			Game.upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20,"autosellers":0}
 			Game.current_dinos=0
 			Game.current_eggs=0
 			for d in dino_list.get_children():
@@ -255,4 +253,4 @@ func _on_Delete_pressed():
 
 
 func _on_AutosellTimer_timeout():
-	pass # Replace with function body.
+	Game.autosell()
