@@ -40,7 +40,8 @@ func _on_Button_pressed():
 			Game.add_money(am)
 		else:
 			Game.upgrade_variables[eff]+=am
-	Game.completed_upgrades.append(fname)
-	Game.unlocked_upgrades.pop_at(Game.unlocked_upgrades.find(fname))
+
 	if !repeatable:
 		queue_free()
+		Game.completed_upgrades.append(fname)
+		Game.unlocked_upgrades.pop_at(Game.unlocked_upgrades.find(fname))

@@ -2,7 +2,7 @@
 	"bigger_coops": {
 		"name": "Bigger Coops",
 		"description": "Your dinosaurs are living in crowded, dirty conditions. Buy a bigger coop so you can make more dinosaurs live in crowded and dirty conditions.",
-		"price": 1000,
+		"price": 5000,
 		"repeatable": true,
 		"unlock_condition": "money",
 		"unlock_amount": 10,
@@ -11,27 +11,17 @@
 	},
 	"bigger_storage": {
 		"name": "Better Egg Storage",
-		"description": "Luxury silk-lined baskets.",
+		"description": "Luxury silk-lined baskets to put all your eggs in.",
 		"price": 5000,
 		"repeatable": true,
-		"unlock_condition": "total_eggs",
-		"unlock_amount": 100,
-		"effect": "max_eggs",
-		"effect_amount": 50
-	},
-	"descriptive_upgrades": {
-		"name": "Better Upgrade descriptions",
-		"description": "Upgrades now tell you their precise effects, with like numbers and everything. This was originally going to be free but it was a pain to code so screw you, you have to work for it.",
-		"price": 5000,
-		"repeatable": false,
-		"unlock_condition": "total_eggs",
-		"unlock_amount": 10000000000000,
+		"unlock_condition": "money",
+		"unlock_amount": 10,
 		"effect": "max_eggs",
 		"effect_amount": 50
 	},
 	"data": {
 		"name": "Eggcell Spreadsheets",
-		"description": "Turns out the bar at the top with all scary abbreviations was actually useful. Whoulda thunk?",
+		"description": "Turns out the bar at the top with all scary abbreviations was actually useful. You now have a bunch of helpful data about your egg production in the stats screen",
 		"price": 5000,
 		"repeatable": false,
 		"unlock_condition": "total_eggs",
@@ -45,7 +35,7 @@
 		"price": 10000,
 		"repeatable": true,
 		"unlock_condition": "total_eggs",
-		"unlock_amount": 10000,
+		"unlock_amount": 1000,
 		"effect": "autosellers",
 		"effect_amount": 1
 	},
@@ -55,7 +45,7 @@
 		"price": 10000,
 		"repeatable": false,
 		"unlock_condition": "total_money",
-		"unlock_amount": 1000,
+		"unlock_amount": 100000000,
 		"effect": "sell_100",
 		"effect_amount": 1
 	},
@@ -65,8 +55,18 @@
 		"price": 100000,
 		"repeatable": false,
 		"unlock_condition": "total_money",
-		"unlock_amount": 10000,
+		"unlock_amount": 10000000000000,
 		"effect": "sell_all",
+		"effect_amount": 1
+	},
+	"sell_more": {
+		"name": "Egg Carrying Techniques",
+		"description": "Study ancient Aztec ninja-viking egg-carrying techniques to sell more eggs at a time",
+		"price": 1000,
+		"repeatable": true,
+		"unlock_condition": "total_eggs",
+		"unlock_amount": 200,
+		"effect": "sell_more",
 		"effect_amount": 1
 	}
 }

@@ -123,8 +123,7 @@ func _on_TutTab_pressed():
 
 func _on_Stats_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Stats)
-	Game.money+=500
-
+#	Game.money+=5000
 func save_game():
 	var s= File.new()
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
@@ -141,6 +140,7 @@ func load_game():
 	var s= File.new()
 	var button=get_node("MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Settings/HBoxContainer2/1").group.get_pressed_button().name
 	if !(s.open("res://save%s.sav"%button, File.READ)) and s.get_var()[9]==Game.version:
+		s.open("res://save%s.sav"%button, File.READ) #for some reason s becomes null without this line
 		var a=s.get_var()
 		print("loading")
 		for dino in a[0]: # this HAS to be before game.dinos=a[0] or else it wont work
@@ -161,6 +161,16 @@ func load_game():
 			Game.current_dinos+=n
 		for n in Game.eggs.values():
 			Game.current_eggs+=n
+		for u in $MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/RepeatableUpgrades.get_children():
+			if u.name!="Label" and u.name!="HSeparator":
+				u.queue_free()
+		for u in $MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades/UniqueUpgrades.get_children():
+			if u.name!="Label" and u.name!="HSeparator":
+				u.queue_free()
+			
+		for u in Game.unlocked_upgrades:
+			if !(u in Game.completed_upgrades):
+				add_upgrade_panel(u)
 	else:
 			print("Empty save. Creating new game")
 			
@@ -170,7 +180,7 @@ func load_game():
 			Game.money=Game.dino_list[starter_dino]["price"]
 			Game.market={}
 			Game.stats={"Money (all-time)":0,"Eggs Produced (all-time)":0,"Eggs Sold (all-time)":0}
-			Game.upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20,"autosellers":0}
+			Game.upgrade_variables={"sell_100":0,"sell_all":0,"max_eggs":100,"max_dinos":20,"autosellers":0,"sell_more":1}
 			Game.current_dinos=0
 			Game.current_eggs=0
 			for d in dino_list.get_children():
@@ -202,7 +212,7 @@ func _on_MarketTimer_timeout():
 		save_game()
 
 func add_unknown_panel():
-	if Game.mystery_panel != null:
+	if is_instance_valid(Game.mystery_panel):
 		Game.mystery_panel.queue_free()
 	var p_array=[]
 	for d in Game.dino_list:
@@ -227,6 +237,7 @@ func check_upgrade_condition(fname):
 	var am=u["unlock_amount"]
 	if conditions[cond]>=am:
 		add_upgrade_panel(fname)
+		$MainScreen/Panel/HBoxContainer/Upgrades.text="Upgrades (*)"
 		Game.unlocked_upgrades.append(fname)
 
 		
@@ -239,6 +250,7 @@ func _on_Autosave_toggled(button_pressed):
 
 func _on_Upgrades_pressed():
 	switch_panel($MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer/Upgrades)
+	$MainScreen/Panel/HBoxContainer/Upgrades.text="Upgrades"
 
 
 

@@ -95,7 +95,20 @@ size_flags_vertical = 4
 theme = SubResource( 2 )
 text = "Sell 1"
 
+[node name="BuyMore" type="Button" parent="Panel/HBoxContainer"]
+visible = false
+margin_left = 227.0
+margin_top = 12.0
+margin_right = 268.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( -321, 155 )
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = SubResource( 2 )
+text = "Sell 1"
+
 [node name="Buy100" type="Button" parent="Panel/HBoxContainer"]
+visible = false
 margin_left = 227.0
 margin_top = 12.0
 margin_right = 280.0
@@ -107,9 +120,10 @@ theme = SubResource( 2 )
 text = "Sell 100"
 
 [node name="BuyAll" type="Button" parent="Panel/HBoxContainer"]
-margin_left = 284.0
+visible = false
+margin_left = 227.0
 margin_top = 12.0
-margin_right = 331.0
+margin_right = 274.0
 margin_bottom = 31.0
 rect_pivot_offset = Vector2( -321, 155 )
 size_flags_horizontal = 3
@@ -121,14 +135,14 @@ __meta__ = {
 }
 
 [node name="VSeparator2" type="VSeparator" parent="Panel/HBoxContainer"]
-margin_left = 335.0
-margin_right = 339.0
+margin_left = 227.0
+margin_right = 231.0
 margin_bottom = 44.0
 
 [node name="Price" type="Label" parent="Panel/HBoxContainer"]
-margin_left = 343.0
+margin_left = 235.0
 margin_top = 15.0
-margin_right = 393.0
+margin_right = 285.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 50, 0 )
 size_flags_horizontal = 3
@@ -138,14 +152,14 @@ text = "1337"
 align = 1
 
 [node name="VSeparator3" type="VSeparator" parent="Panel/HBoxContainer"]
-margin_left = 397.0
-margin_right = 401.0
+margin_left = 289.0
+margin_right = 293.0
 margin_bottom = 44.0
 
 [node name="Amount" type="Label" parent="Panel/HBoxContainer"]
-margin_left = 405.0
+margin_left = 297.0
 margin_top = 15.0
-margin_right = 417.0
+margin_right = 309.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
@@ -154,5 +168,6 @@ text = "69"
 align = 1
 
 [connection signal="pressed" from="Panel/HBoxContainer/Buy" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/BuyMore" to="." method="_on_BuyMore_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Buy100" to="." method="_on_Buy100_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/BuyAll" to="." method="_on_BuyAll_pressed"]

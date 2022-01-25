@@ -201,7 +201,6 @@ __meta__ = {
 }
 
 [node name="Dinos" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
-visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3
@@ -226,6 +225,7 @@ margin_bottom = 30.0
 text = "Eggs: 0/20"
 
 [node name="Upgrades" type="VBoxContainer" parent="MainScreen/MarginContainer2/Panel/VBoxContainer/ScrollContainer"]
+visible = false
 margin_right = 989.0
 margin_bottom = 498.0
 size_flags_horizontal = 3

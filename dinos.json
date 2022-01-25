@@ -1,55 +1,61 @@
 {
 	"Eoraptor": {
+		"description": "A small, bipedal, omnivorous species, and one of the earliest known dinosaurs.",
 		"price": 100,
-		"unlock_price":100,
+		"unlock_price": 100,
 		"diet": "Omnivore",
 		"period": 5,
-		"clutch":1,
+		"clutch": 1,
 		"egg_price": 10,
 		"flags": []
 	},
 	"Plateosaurus": {
+		"description": "An ancient herbivore, and a distant ancestor to the gigantic sauropods.",
 		"price": 4000,
-		"unlock_price":5000,
+		"unlock_price": 5000,
 		"diet": "Herbivore",
 		"period": 2,
-		"clutch":2,
+		"clutch": 2,
 		"egg_price": 20,
 		"flags": []
 	},
 	"Herrerasaurus": {
+		"description": "This fearsome predator was the first result when I googled 'early dinosaur carnivore'",
 		"price": 10000,
-		"unlock_price":10000,
+		"unlock_price": 10000,
 		"diet": "Carnivore",
 		"period": 60,
-		"clutch":10,
+		"clutch": 10,
 		"egg_price": 500,
 		"flags": []
 	},
 	"Triceratops": {
+		"description": "Better known as 'that orange one from The Land Before Time', this three-horned giant had a glorious reign that peaked in 1994, when it was adopted as the state dinosaur of Wyoming",
 		"price": 16000,
-		"unlock_price":20000,
+		"unlock_price": 20000,
 		"diet": "Carnivore",
 		"period": 5,
-		"clutch":2,
+		"clutch": 2,
 		"egg_price": 400,
 		"flags": []
 	},
 	"Stegosaurus": {
+		"description":"This huge herbivore, famously covered with upright plates and spikes, had a brain so small that some paleontologists felt bad for it and hypothesized that it had a second brain in its tail. It probably didn't.",
 		"price": 100000,
-		"unlock_price":100000,
+		"unlock_price": 100000,
 		"diet": "Carnivore",
 		"period": 1,
-		"clutch":10,
+		"clutch": 10,
 		"egg_price": 50,
 		"flags": []
 	},
 	"Velociraptor": {
+		"description": "This dinosaur is very popular with geriatric geeks because some 90's movie depicted it as a vicious killer instead of the feathered turkey-sized chicken-reptile that it actually was",
 		"price": 200000,
-		"unlock_price":200000,
+		"unlock_price": 200000,
 		"diet": "Carnivore",
 		"period": 120,
-		"clutch":20,
+		"clutch": 20,
 		"egg_price": 10000,
 		"flags": []
 	}

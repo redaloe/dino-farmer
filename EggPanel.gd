@@ -18,8 +18,12 @@ func _ready():
 	Game.dinos[fname]=0
 	Game.eggs[fname]=0
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if Game.upgrade_variables["sell_more"]>1:
+		$Panel/HBoxContainer/BuyMore.show()
+		$Panel/HBoxContainer/BuyMore.text="Sell %d" % Game.upgrade_variables["sell_more"]
 	if Game.upgrade_variables["sell_100"]==1:
 		$Panel/HBoxContainer/Buy100.show()
 	else:
@@ -38,10 +42,12 @@ func _process(_delta):
 			$Panel/HBoxContainer/Buy.disabled=true
 			$Panel/HBoxContainer/Buy100.disabled=true
 			$Panel/HBoxContainer/BuyAll.disabled=true
+			$Panel/HBoxContainer/BuyMore.disabled=true
 		else:
 			$Panel/HBoxContainer/Buy.disabled=false
 			$Panel/HBoxContainer/Buy100.disabled=false
 			$Panel/HBoxContainer/BuyAll.disabled=false
+			$Panel/HBoxContainer/BuyMore.disabled=false
 
 func _on_Button_pressed():
 	if(Input.is_key_pressed(KEY_SHIFT)):
@@ -91,3 +97,19 @@ func _on_BuyAll_pressed():
 
 
 	
+
+
+func _on_BuyMore_pressed():
+	var n=Game.upgrade_variables["sell_more"]
+	if(Game.eggs[fname]>=n):
+		Game.add_money(Game.market[fname]*n)
+		Game.market[fname]=Game.market[fname]/((n/100)+1)
+		Game.stats["Eggs Sold (all-time)"]+=n
+		Game.eggs[fname]-=n
+		Game.current_eggs-=n
+	elif(Game.eggs[fname]<n):
+		Game.add_money(Game.market[fname]*Game.eggs[fname])
+		Game.market[fname]=Game.market[fname]/((Game.eggs[fname]/100)+1)
+		Game.stats["Eggs Sold (all-time)"]+=Game.eggs[fname]
+		Game.eggs[fname]=0
+		Game.current_eggs=0
